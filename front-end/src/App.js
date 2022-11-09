@@ -1,9 +1,13 @@
 import './App.css';
+import Home from './pages/home/Home';
 
 function App() {
   return (
     <div className="App">
-      {/* only use app.js file when you working ... remove all code before push or commit  */}
+ 
+  {/* <Home/> */}
+
+
     </div>
   );
 }

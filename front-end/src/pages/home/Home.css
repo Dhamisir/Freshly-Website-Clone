@@ -1,0 +1,29 @@
+.backg {
+  background-image: linear-gradient(270deg, rgba(0, 0, 0, 0.5), transparent),
+    url(../../assets/freshly.jpg);
+  z-index: -1;
+  background-size: 100%;
+}
+.carrot {
+  background-image: linear-gradient(270deg, rgba(0, 0, 0, 0.5), transparent),
+    url(../../assets/carrot.jpg);
+  z-index: -1;
+  background-size: 100%;
+  padding: 1.5rem;
+  /* background-repeat: no-repeat; */
+}
+.animate {
+  overflow: hidden;
+  margin: 0 auto;
+
+}
+
+.animate Image {
+  width: 100%;
+  transition: 0.5s all ease-in-out;
+  width: 10%;
+}
+
+.animate:hover Image {
+  transform: scale(1.5);
+}
