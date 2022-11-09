@@ -24,5 +24,24 @@ Router.post("/post", async (req, res) =>{
    }
 });
 
+// Get The all Products into the database at url (http://localhost:8080/products/update)
+Router.patch("/update", async (req, res) =>{
+   try {
+    let product = await Product.find();
+    res.status(201).send(product);
+   } catch (error) {
+    res.status(404).send({error : "Something Went Wrong!"});
+   }
+});
+
+// Get The all Products into the database at url (http://localhost:8080/products/delete)
+Router.delete("/delete", async (req, res) =>{
+   try {
+    let product = await Product.find();
+    res.status(201).send(product);
+   } catch (error) {
+    res.status(404).send({error : "Something Went Wrong!"});
+   }
+});
 
 module.exports = Router;
