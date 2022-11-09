@@ -5,6 +5,10 @@ const port = process.env.PORT || 8080;
 const cors = require("cors");
 app.use(express.json());
 app.use(cors());
+//Import Users Route
+const userRouter = require('./features/Users/Users.Route');
+//Import Products Route
+const productsRouter = require('./features/Products/Products.Router')
 
 //For connecting to the database
 const connection = require("./config/db");
@@ -12,6 +16,12 @@ connection();
 
 
 
+
+// For Users Router
+app.use("/users", userRouter);
+
+// For Products Router
+app.use("/products", productsRouter);
 
 //Listening to the Server in 8080 port
 app.listen(port, () =>{
