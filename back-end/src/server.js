@@ -12,6 +12,8 @@ const adminRouter = require("./features/admin/admin.route");
 const userRouter = require('./features/Users/Users.Route');
 //Import Products Route
 const productsRouter = require('./features/Products/Products.Router')
+//Import Products Route
+const cartRouter = require("./features/Carts/Carts.route");
 
 
 //For connecting to the database
@@ -25,6 +27,9 @@ app.use("/users", userRouter);
 
 // For Products Router
 app.use("/products", productsRouter);
+
+// For Carts Router
+app.use("/carts", cartRouter)
 
 //Listening to the Server in 8080 port
 app.listen(port, () => {
