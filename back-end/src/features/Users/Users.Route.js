@@ -16,8 +16,9 @@ Router.post("/signup", async (req, res) => {
 
         let isEmail = await User.findOne({ email });
         //Check if the email exists
-        if (isEmail) {
-            res.status(404).send("This Email already Exists!");
+
+        if(isEmail){
+            res.status(201).send({msg : "This Email Already Exists!"});
         }
 
         let user = await User.create(req.body);
@@ -44,7 +45,9 @@ Router.post("/login", async (req, res) => {
         if (isEmail.password !== password) {
             res.status(404).send("Wrong Password")
         }
+        let token = `${isEmail._id}:${isEmail.role}`;
 
+        res.cookie("next-food", token)
         // if all criteria are pass then send the token
         res.status(201).send({ token: `${isEmail._id}:${isEmail.role}` });
 
