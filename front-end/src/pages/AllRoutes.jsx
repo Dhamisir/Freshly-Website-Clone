@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import AdminRequireAuth from '../hoc/AdminRequireAuth'
@@ -21,4 +22,4 @@ const AllRoutes = () => {
     )
 }
 
-export default AllRoutes
+export default AllRoutes;
