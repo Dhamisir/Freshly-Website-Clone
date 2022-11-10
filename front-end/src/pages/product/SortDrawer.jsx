@@ -23,7 +23,7 @@ const SortDrawer = () => {
   return (
   <Box>
     <RadioGroup defaultValue={placement} onChange={setPlacement}>
-        <Stack direction='row' mb='4'>
+        <Stack direction='row'>
           {/* <Radio value='left'>Left</Radio> */}
         </Stack>
       </RadioGroup>

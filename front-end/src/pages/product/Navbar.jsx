@@ -19,7 +19,7 @@ const Navbar = () => {
             <ChevronLeftIcon /> Back
           </Button>
         </Box>
-        <Box>
+        <Box alignSelf={"center"}>
           <DPicker />
         </Box>
         <Box>
