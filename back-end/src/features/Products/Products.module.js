@@ -5,12 +5,16 @@ const productSchema = mongoose.Schema({
         type : String,
         required : true,
     },
+    subTitle : {
+        type : String,
+        required : true,
+    },
     adminId : {
         type : mongoose.Schema.Types.ObjectId,
         ref : "admin"
     },
     img : {
-        type : String,
+        type : Array,
         required : true
     },
     description : {
@@ -27,6 +31,29 @@ const productSchema = mongoose.Schema({
         type : Number,
         min: 1,
         default: 1 
+    },
+    ingredients : {
+        type : Array,
+        required : true
+    },
+    calorie : {
+        type : Number,
+        required : true
+    },
+    carbs : {
+        type : Number,
+        required : true
+    },
+    totalFat : {
+        type : Number,
+        required : true
+    },
+    protein : {
+        type : Number,
+        required : true
+    },
+    ingredientsTyps : {
+        type : Array,
     }
 }, {
     timestamps : true,

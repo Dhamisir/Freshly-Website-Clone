@@ -44,9 +44,11 @@ Router.post("/login", async (req, res) =>{
         if(isEmail.password !== password){
             res.status(404).send("Wrong Password")
         }
+        let token = `${isEmail._id}:${isEmail.role}`;
 
+        res.cookie("next-food", token)
         // if all criteria are pass then send the token
-        res.status(201).send({token : `${isEmail._id}:${isEmail.role}`});
+        res.status(201).send("Login Successfull!");
        
     } catch (error) {
         res.status(404).send({error : "Something Went Wrong!"});

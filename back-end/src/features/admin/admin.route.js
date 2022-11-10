@@ -4,7 +4,7 @@ const router = express.Router();
 
 // Admin signup
 router.post("/signup", async (req, res) => {
-  const { email, password, first_name, last_name, roall, avtar } = req.body;
+  const { email, password, first_name, last_name, role, avtar } = req.body;
   try {
     let existingUser = await Admin.findOne({ email });
     if (existingUser) {
@@ -15,10 +15,12 @@ router.post("/signup", async (req, res) => {
         password,
         first_name,
         last_name,
-        roall,
+        role,
         avtar,
       });
-      res.send({ token: `${admin.email}_$_${admin.password}` });
+      if(admin){
+        res.send("Sign-Up Successfully!");
+      }
     }
   } catch (error) {
     res.status(404).send(e.massege);
@@ -33,7 +35,7 @@ router.post("/login", async (req, res) => {
     if (admin) {
       if (password === admin.password) {
         res.send({
-          token: `${email}_#_${password}`,
+          token: `${admin._id}:${admin.role}`,
           admin,
         });
       } else {

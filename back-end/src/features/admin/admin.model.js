@@ -18,7 +18,7 @@ const adminSchema = new mongoose.Schema(
     last_name: {
       type: String,
     },
-    roall: {
+    role: {
       type: String,
       default: "admin",
     },
