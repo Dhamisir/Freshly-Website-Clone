@@ -1,14 +1,9 @@
-import { Flex, Icon, Link, Text } from "@chakra-ui/react";
+import { Flex, Icon, Text } from "@chakra-ui/react";
 import React from "react";
-
+import { Link } from "react-router-dom";
 const NavItem = ({ icon, name }) => {
   return (
-    <Link
-      textAlign={"center"}
-      href="#"
-      style={{ textDecoration: "none" }}
-      _focus={{ boxShadow: "none" }}
-    >
+    <Link to={links} style={{ textDecoration: "none" }}>
       <Flex
         align="center"
         p="4"
