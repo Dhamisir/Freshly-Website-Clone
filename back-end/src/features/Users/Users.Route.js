@@ -17,7 +17,7 @@ Router.post("/signup", async (req, res) =>{
         let isEmail = await User.findOne({email});
         //Check if the email exists
         if(isEmail){
-            res.status(404).send("This Email already Exists!");
+            res.status(201).send({msg : "This Email Already Exists!"});
         }
 
         let user = await User.create(req.body);
