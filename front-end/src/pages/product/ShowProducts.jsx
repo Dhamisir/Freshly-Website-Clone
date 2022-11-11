@@ -22,17 +22,17 @@ import { useParams } from "react-router-dom";
 import { getproducts } from "../../redux/products/product.actions";
 import { singleGet } from "../../redux/products/product.actions";
 const ShowProducts = () => {
-
+  const [show, setShow] = useState(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const {data, singleData} = useSelector((store) => store.product);
+  const { data, singleData } = useSelector((store) => store.product);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getproducts());
-    dispatch(singleGet());
-  }, []);
-  
+    dispatch(singleGet(show));
+  }, [show]);
+
   return (
     <>
       <Grid
@@ -53,7 +53,10 @@ const ShowProducts = () => {
             <Image
               borderRadius={"10px"}
               width={"300px"}
-              onClick={onOpen}
+              onClick={() => {
+                onOpen();
+                setShow(el._id);
+              }}
               height="250px"
               src={el.img[0]}
             />
@@ -69,22 +72,24 @@ const ShowProducts = () => {
           </Box>
         ))}
       </Grid>
-      <Button onClick={onOpen}>Open Modal</Button>
-
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
+          <ModalHeader>{singleData.title}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Heading>{singleData.title}</Heading>
+            <Image src={singleData.img} />
+            <Text>{singleData.description}</Text>
+            <Heading size={"sm"}>Price - $ {singleData.price}</Heading>
+            <Heading size={"sm"}>Rating - {singleData.rating}</Heading>
+        
           </ModalBody>
 
           <ModalFooter>
             <Button colorScheme="blue" mr={3} onClick={onClose}>
               Close
             </Button>
-            <Button variant="ghost">Secondary Action</Button>
+            <Button  m={"10px"} colorScheme={"blue"} >Add to Cart</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
