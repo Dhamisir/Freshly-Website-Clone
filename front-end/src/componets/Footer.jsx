@@ -8,7 +8,7 @@ const Footer = () => {
                 <GridItem w='150px' h='10' justifySelf={{ base: "center", md: "left" }}>
                     <Image src='https://user-images.githubusercontent.com/96005514/200733048-13b7c9b1-a830-4bff-97a8-84f50f4ab359.png' />
                 </GridItem>
-                <Box>
+                <Box textAlign="center">
                     <Text p="5px" fontSize="lg" fontWeight="bold">Company</Text>
                     <Text p="5px">Careers</Text>
                     <Text p="5px">Contact Us</Text>
@@ -18,7 +18,7 @@ const Footer = () => {
                     <Text p="5px">Affilates</Text>
                     <Text p="5px">Partnerships</Text>
                 </Box>
-                <Box>
+                <Box textAlign="center">
                     <Text p="5px" fontSize="lg" fontWeight="bold">Learn More</Text>
                     <Text p="5px">Plans & Menu</Text>
                     <Text p="5px">Why Freshy?</Text>
@@ -27,7 +27,7 @@ const Footer = () => {
                     <Text p="5px">Blog</Text>
                     <Text p="5px">Student</Text>
                 </Box>
-                <Box>
+                <Box textAlign="center">
                     <Text p="5px" fontSize="lg" fontWeight="bold">Learn More</Text>
                     <Flex m="10px 0px" justifyContent="center">
                         <Link m="0px 10px" href=''><FaFacebookF /></Link>

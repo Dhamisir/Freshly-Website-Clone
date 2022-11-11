@@ -6,16 +6,20 @@ import HomeWork from './HomeWork'
 import Homebottom2 from "./Homebottom2"
 import HomeLower from './HomeLower'
 import HomeLast from './HomeLast'
+import Navbar from '../../componets/Navbar'
+import Footer from '../../componets/Footer'
 const Home = () => {
   return (
     <>
-    <HomeTop/>
-    <HomeWork/>
-    <HomeMiddle/>
-    <HomeBottom/>
-    <Homebottom2/>
-    <HomeLower/>
-    <HomeLast/>
+      <Navbar />
+      <HomeTop />
+      <HomeWork />
+      <HomeMiddle />
+      <HomeBottom />
+      <Homebottom2 />
+      <HomeLower />
+      <HomeLast />
+      <Footer />
     </>
   )
 }
