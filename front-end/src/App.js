@@ -1,12 +1,26 @@
+
 import './App.css';
-import Home from './pages/home/Home';
-import Products from './pages/product/Products';
+
+
+
+import Footer from './componets/Footer';
+import Navbar from './componets/Navbar';
+import AllRoutes from './pages/AllRoutes';
+
+
+
 function App() {
   return (
     <div className="App">
+
  
-  {/* <Home/> */}
- <Products/>
+
+
+      {/* only use app.js file when you working ... remove all code before push or commit  */}
+      <Navbar />
+      <AllRoutes />
+      <Footer />
+
 
     </div>
   );
