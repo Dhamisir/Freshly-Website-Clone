@@ -173,4 +173,20 @@ Router.get("/get/admin", async (req, res) =>{
    }
 });
 
+// Get The admin Products into the database at url (http://localhost:8080/products/singleGet/:id)
+Router.get("/singleGet/:id", async (req, res) =>{
+   try {
+      let id = req.params.id;
+      let isExists = await Product.findById(id);
+      if(isExists){
+         res.status(201).send(isExists);
+      }else{
+         res.status(401).send("Sorry!");
+      }
+   } catch (error) {
+      res.status(404).send({error : "Something Went Wrong!"});
+   }
+});
+
+// only
 module.exports = Router;
