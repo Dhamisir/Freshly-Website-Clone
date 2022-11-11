@@ -36,7 +36,7 @@ Router.post("/add", async (req, res) =>{
 });
 
 // add product to the cart url : (http://localhost:8080/carts/get)
-Router.get("/get", async(req, res) =>{
+Router.post("/get", async(req, res) =>{
     try {
         let {token} = req.body;
         if(!token){
