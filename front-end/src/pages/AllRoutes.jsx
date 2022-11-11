@@ -10,6 +10,7 @@ import Home from "./home/Home";
 import AdminProduct from './AdminPages/AdminProduct';
 import AdminUser from './AdminPages/AdminUser';
 import Cart from './Cart';
+import Products from './product/Products'
 
 const AllRoutes = () => {
     return (
@@ -22,6 +23,7 @@ const AllRoutes = () => {
                 <Route path='/cart' element={<Cart />} />
                 <Route path='/admin' element={<AdminRequireAuth><AdminHome /></AdminRequireAuth>} />
                 <Route path='/admin-login' element={<AdminLogin />} />
+
                 <Route
                     path="/admin/product"
                     element={
@@ -38,6 +40,7 @@ const AllRoutes = () => {
                         </AdminRequireAuth>
                     }
                 ></Route>
+                <Route path='/products' element={<Products/>}> </Route>
             </Routes>
         </>
     )

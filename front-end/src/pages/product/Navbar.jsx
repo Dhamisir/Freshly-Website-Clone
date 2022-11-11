@@ -1,27 +1,33 @@
-import React from 'react'
-import DPicker from './DPicker'
-import MenuOpt from './MenuOpt'
-import {Flex,Box,Button,Heading,Text} from "@chakra-ui/react"
+import React from "react";
+import DPicker from "./DPicker";
+import MenuOpt from "./MenuOpt";
+import { Flex, Box, Button, Heading, Text } from "@chakra-ui/react";
+import { ChevronLeftIcon } from "@chakra-ui/icons";
 
 const Navbar = () => {
   return (
     <>
-    <Flex justify={"space-between"} >
+      <Flex justify={{lg:"space-between",md:"space-between",sm:"center",base:"center"}} boxShadow="lg" rounded={"lg"} p={"5px"}>
         <Box>
-            <Button>Back</Button>
+          <Button
+            bg={"white"}
+            border="none"
+            _hover={{ bg: "white" }}
+            color="blue"
+            display={{lg:"block",md:"block",sm:"none",base:"none"}}
+          >
+            <ChevronLeftIcon /> Back
+          </Button>
+        </Box>
+        <Box alignSelf={"center"}>
+          <DPicker />
         </Box>
         <Box>
-        <Text fontWeight={"700"}>
-          <DPicker/>
-          
-          </Text>    
+          <MenuOpt />
         </Box>
-        <Box>
-         <MenuOpt/>
-        </Box>
-    </Flex>
+      </Flex>
     </>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
