@@ -186,5 +186,7 @@ Router.get("/singleGet/:id", async (req, res) =>{
    } catch (error) {
       res.status(404).send({error : "Something Went Wrong!"});
    }
-})
+});
+
+// only
 module.exports = Router;
