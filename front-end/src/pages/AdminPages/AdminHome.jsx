@@ -5,7 +5,6 @@ const AdminHome = () => {
   return (
     <div>
       <Navbar />
-      <h2>home</h2>
     </div>
   );
 };

@@ -1,6 +1,9 @@
 import React from "react";
 import {
+  Button,
   Container,
+  Flex,
+  Heading,
   IconButton,
   Image,
   Menu,
@@ -17,11 +20,23 @@ import {
   Tr,
 } from "@chakra-ui/react";
 import { BsThreeDotsVertical, BsPencilFill } from "react-icons/bs";
-import { MdDelete } from "react-icons/md";
+import { MdDelete, MdAddCircleOutline } from "react-icons/md";
+
+import { Link } from "react-router-dom";
 const AdminProductShow = () => {
   return (
     <div>
       <Container maxW={"100%"}>
+        <Heading textAlign={"center"}>Product</Heading>
+        <Flex justifyContent={"flex-end"}>
+          <Button
+            variant={"solid"}
+            colorScheme={"facebook"}
+            leftIcon={<MdAddCircleOutline />}
+          >
+            <Link to={"/admin/addProduct"}>Add Product</Link>
+          </Button>
+        </Flex>
         <TableContainer>
           <Table variant={"unstyled"}>
             <Thead>

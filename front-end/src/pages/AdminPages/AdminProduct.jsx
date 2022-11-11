@@ -8,7 +8,6 @@ const AdminProduct = () => {
     <div>
       <Navbar />
       <Container maxW={"6xl"} ml={"20%"}>
-        <h2>product</h2>
         <AdminProductShow />
       </Container>
     </div>
