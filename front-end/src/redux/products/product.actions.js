@@ -13,10 +13,12 @@ try{
 }
 
 }
-export const singleGet=(_id) =>async(dispatch)=>{
+
+
+export const singleGet=(id) =>async(dispatch)=>{
     
 try{
-    let res = await axios.get(`${mainUrl}/products/singleGet/${_id}`)
+    let res = await axios.get(`${mainUrl}/products/singleGet/${id}`)
     dispatch({type:GET_SINGLE,payload:res.data})
     return res.data
 }catch(e){
