@@ -1,5 +1,5 @@
 import axios from "axios"
-import { GET_PRODUCTS_LOADING, GET_PRODUCTS_ERROR, GET_PRODUCTS_SUCCESS } from "./product.types"
+import { GET_PRODUCTS_LOADING, GET_PRODUCTS_ERROR, GET_PRODUCTS_SUCCESS, GET_SINGLE , GET_ERROR } from "./product.types"
 const mainUrl = process.env.REACT_APP_MAIN_URL; 
 
 export const getproducts=() =>async(dispatch)=>{
@@ -13,3 +13,15 @@ try{
 }
 
 }
+export const singleGet=(_id) =>async(dispatch)=>{
+    
+try{
+    let res = await axios.get(`${mainUrl}/products/singleGet/${_id}`)
+    dispatch({type:GET_SINGLE,payload:res.data})
+    return res.data
+}catch(e){
+    dispatch({type:GET_ERROR,payload:e.message})
+}
+
+}
+
