@@ -3,7 +3,7 @@ import { USER_LOGIN, USER_LOGIN_ERROR, USER_LOGOUT } from "./userLogin.type";
 const userToken = localStorage.getItem("userToken")
 const initialState = {
     isAuth: !!userToken,
-    token: "",
+    token: userToken || "",
     isError: false
 }
 

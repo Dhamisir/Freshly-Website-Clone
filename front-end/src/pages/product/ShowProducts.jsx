@@ -1,3 +1,4 @@
+
 import {
   Box,
   Heading,
@@ -21,18 +22,37 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getproducts } from "../../redux/products/product.actions";
 import { singleGet } from "../../redux/products/product.actions";
+import { Navigate } from 'react-router-dom'
+import { cartAdd, cartShow } from '../../redux/cart/cart.action'
+ 
 const ShowProducts = () => {
   const [show, setShow] = useState(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { data, singleData } = useSelector((store) => store.product);
-
+ const { isAuth, token } = useSelector(store => store.userLogin);
+  const { cart } = useSelector(store => store.cartItems);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getproducts());
     dispatch(singleGet(show));
-  }, [show]);
+    dispatch(cartShow({ token: token }))
+  }, []);
+  
+  
+  if (!isAuth) {
+    return <Navigate to="/login" />
+  }
 
+    const checkCart = (id) => {
+    for (let i = 0; i < cart.length; i++) {
+      if (cart[i].productId == id) {
+        return true
+      }
+    }
+    return false;
+  }
+    
   return (
     <>
       <Grid
@@ -60,15 +80,24 @@ const ShowProducts = () => {
               height="250px"
               src={el.img[0]}
             />
+
             <Text>{el.description}</Text>
             <Flex justifyContent={"space-between"}>
               <Heading size={"sm"}>Price - $ {el.price}</Heading>
               <Heading size={"sm"}>Rating - {el.rating}</Heading>
             </Flex>
-            <Button m={"10px"} colorScheme={"blue"}>
-              Add To Cart
-            </Button>
-            {/* </Flex> */}
+            {
+              checkCart(el._id) ? (
+                <Button disabled={true} m={"10px"} colorScheme={"blue"} onClick={() => {
+                  dispatch(cartAdd({ token: token, productId: el._id }))
+                }}>Add To Cart</Button>
+              ) :
+                (
+                  <Button disabled={false} m={"10px"} colorScheme={"blue"} onClick={() => { dispatch(cartAdd({ token: token, productId: el._id })) }}>Add To Cart</Button>
+                )
+            }
+          </Box>
+      </Grid>
           </Box>
         ))}
       </Grid>
@@ -81,10 +110,8 @@ const ShowProducts = () => {
             <Image src={singleData.img} />
             <Text>{singleData.description}</Text>
             <Heading size={"sm"}>Price - $ {singleData.price}</Heading>
-            <Heading size={"sm"}>Rating - {singleData.rating}</Heading>
-        
+            <Heading size={"sm"}>Rating - {singleData.rating}</Heading>        
           </ModalBody>
-
           <ModalFooter>
             <Button colorScheme="blue" mr={3} onClick={onClose}>
               Close
