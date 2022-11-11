@@ -7,7 +7,7 @@ import Footer from './componets/Footer';
 import Navbar from './componets/Navbar';
 import AllRoutes from './pages/AllRoutes';
 
-
+import Products from "../src/pages/product/Products"
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
 
 
       {/* only use app.js file when you working ... remove all code before push or commit  */}
-      <Navbar />
+      {/* <Navbar /> */}
       <AllRoutes />
       <Footer />
 

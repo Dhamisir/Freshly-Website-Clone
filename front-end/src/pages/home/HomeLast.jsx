@@ -1,12 +1,9 @@
 import React from "react";
 import {
   Box,
-  Heading,
-  Text,
   Flex,
   Image,
-  Button,
-  Input,
+ 
 } from "@chakra-ui/react";
 import "./Home.css";
 const HomeLast = () => {

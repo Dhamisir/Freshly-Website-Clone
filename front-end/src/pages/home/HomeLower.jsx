@@ -29,8 +29,7 @@ const HomeLower = () => {
             placeholder="freshly@freshly.com"
           />
           <Button
-            color={"white"}
-            backgroundColor={"blue"}
+           colorScheme={"blue"}
             p={{ lg: "1.5rem", md: "1.3rem", sm: "1rem", base: "0.7rem" }}
             m={{ lg: "1.5rem", md: "1.3rem", sm: "1rem", base: "1rem" }}
             fontSize={"lg"}

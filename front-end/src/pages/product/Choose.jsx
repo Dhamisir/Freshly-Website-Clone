@@ -1,17 +1,35 @@
 import React from "react";
-import { Flex, Box, Button, Heading, Text } from "@chakra-ui/react";
-import SortDrawer from "./SortDrawer";
+import { Flex, Box, Button, Heading, Text, Select } from "@chakra-ui/react";
+
 const Choose = () => {
   return (
     <Box padding={"1rem"}>
-      <Flex justify={"space-between"} alignContent="center">
-        <Box alignSelf={"center"}>
-          <Text fontWeight={"700"}>Choose Meals</Text>
-        </Box>
-        <Box>
-          <SortDrawer />
-        </Box>
-      </Flex>
+      <Box
+        display={"flex"}
+        justifyContent="center"
+        flexDirection={"column"}
+        textAlign="center"
+      >
+        <Heading margin={"1rem"}>On the Menu</Heading>
+        <Text width={{lg:"50%",md:"50%",base:"80%",sm:"80%"}} margin="auto">
+          Whatever your lifestyle, Freshly’s got you covered—with gluten-free,
+          dairy-free, plant-based, carb-smart, and calorie-conscious meal
+          options! Our heat-&-eat breakfasts, low-lift lunches, and done-for-you
+          dinners provide an effortless alternative to everyday cooking, with
+          nutritious prepared meals delivered fresh to your door. Explore this
+          week’s dishes and start eating better:
+        </Text>
+      </Box>
+      <Box display={"flex"} m="2rem" justifyContent="center" gap={"10px"}>
+        <Text alignSelf={"center"} color="gray">Meal Category : </Text>
+        <Select alignSelf={"center"} width={"20%"} size={{lg:"sm",base:"xs",sm:"xs"}}  placeholder="Select option">
+          <option value="all meals">All Meals</option>
+          <option value="purely plant">Purely Plant</option>
+          <option value="signature collection">Signature Collection</option>
+          <option value="freshly fits">Freshly Fits</option>
+          <option value="proteins & sides">Proteins & Sides</option>
+        </Select>
+      </Box>
     </Box>
   );
 };
