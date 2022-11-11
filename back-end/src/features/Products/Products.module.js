@@ -14,7 +14,11 @@ const productSchema = mongoose.Schema({
         ref : "admin"
     },
     img : {
-        type : Array,
+        type : String,
+        required : true
+    },
+    subImg : {
+        type : String,
         required : true
     },
     description : {
