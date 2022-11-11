@@ -14,7 +14,7 @@ const ShowProducts = () => {
 console.log(products)
   return (
     <>
-    <Grid gridTemplateColumns={{lg:"repeat(4,1fr)",md:"repeat(3,1fr)",sm:"repeat(2,1fr)",base:"repeat(1,1fr)"}} justifyContent="center" width={"90%"} margin="auto" gap="20px" alignContent={"center"}>
+    <Grid gridTemplateColumns={{lg:"repeat(4,1fr)",md:"repeat(3,1fr)",sm:"repeat(2,1fr)",base:"repeat(1,1fr)"}} justifyContent="center" width={"90%"} margin="auto" gap="20px">
  {products.map((el)=>(<Box boxShadow={"lg"} p="5px" rounded="lg" key = {el._id}>
        {/* <Flex flexDirection={"column"}> */}
     <Image borderRadius={"10px"} width={"300px"} height="250px" src= {el.img[0]}/>
