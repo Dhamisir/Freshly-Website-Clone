@@ -124,9 +124,9 @@ const HomeMiddle = () => {
         </Flex>
         <Flex justify={"center"} mb={"1.5rem"}>
           <Button
-            backgroundColor={"blue"}
+      colorScheme={"blue"}
             p={"1.5rem"}
-            color={"white"}
+           
             width={"100%"}
           >
             View Plans & Menu

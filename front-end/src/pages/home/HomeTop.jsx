@@ -59,7 +59,8 @@ const HomeTop = () => {
         <Button
           m={"10px"}
           display={{ lg: "block", md: "block", sm: "none", base: "none" }}
-          color={"blue"}
+          colorScheme={"blue"}
+
           border="2px solid blue"
         >
           Expore Meals
@@ -81,9 +82,10 @@ const HomeTop = () => {
         </FormControl>
         <Button
           m={"20px"}
-          backgroundColor={"blue"}
+          
           alignSelf={"left"}
-          color={"white"}
+      colorScheme={"blue"}
+         
         >
           Get Started
         </Button>

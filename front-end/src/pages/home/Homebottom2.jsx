@@ -19,8 +19,7 @@ const Homebottom2 = () => {
           Each Freshly meal is perfectly sized for 1 person to enjoy at 1 sitting. Our fully-prepared meals are delivered fresh, and ready to eat in 3 minutes.
           </Text>
           <Button
-            color={"white"}
-            backgroundColor={"blue"}
+         colorScheme={"blue"}
             p={{ lg: "1.5rem", md: "1.3rem", sm: "1rem", base: "0.7rem" }}
             m={{ lg: "1.5rem", md: "1.3rem", sm: "1rem", base: "1rem" }}
             fontSize={"lg"}

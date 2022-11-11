@@ -6,6 +6,7 @@ import AdminHome from './AdminPages/AdminHome'
 import AdminLogin from './AdminPages/AdminLogin'
 import Contact from './Contact'
 import Login from './Login'
+import Products from './product/Products'
 import Signup from './Signup'
 
 const AllRoutes = () => {
@@ -17,6 +18,7 @@ const AllRoutes = () => {
                 <Route path='/Login' element={<Login />} />
                 <Route path='/admin' element={<AdminRequireAuth><AdminHome /></AdminRequireAuth>} />
                 <Route path='/admin-login' element={<AdminLogin />} />
+                <Route path='/products' element={<Products/>}> </Route>
             </Routes>
         </div>
     )

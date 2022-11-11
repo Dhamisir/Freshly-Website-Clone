@@ -36,7 +36,7 @@ const HomeBottom = () => {
 </Flex>
 <Text width={"60%"} textAlign="center" margin={"auto"}>Shipping and tax added at checkout. Prices are rounded for your convenience.</Text>
 <Flex justifyContent={"center"}>
-<Button color={"white"} backgroundColor={"blue"} p="1.5rem" m="1.5rem" fontSize={"lg"}>Sign Up Now</Button>
+<Button colorScheme={"blue"} p="1.5rem" m="1.5rem" fontSize={"lg"}>Sign Up Now</Button>
 
 </Flex>
     </Box>
