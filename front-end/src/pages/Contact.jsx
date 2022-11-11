@@ -2,10 +2,13 @@ import { Box, Button, Center, Flex, Heading, Text } from '@chakra-ui/react';
 import { AiOutlineMail, AiOutlineQuestionCircle } from 'react-icons/ai';
 import { BsFillPhoneFill } from 'react-icons/bs';
 import { GiChainedArrowHeads } from 'react-icons/gi';
+import Footer from '../componets/Footer';
+import Navbar from '../componets/Navbar';
 
 const Contact = () => {
     return (
         <>
+            <Navbar />
             {/* banner */}
             <Box h="500px" backgroundImage="https://user-images.githubusercontent.com/96005514/200758342-57b63e28-4326-40c1-98af-74931aca02e3.png">
                 <Center h="100%">
@@ -17,7 +20,7 @@ const Contact = () => {
                 </Center>
             </Box>
             {/* Customer Support */}
-            <Heading m="50px">Customer Support</Heading>
+            <Heading m="50px" textAlign="center">Customer Support</Heading>
 
             <Box m="10px auto" bg="#F7F7F7" w={{ base: "100%", md: "50%" }} p="30px">
                 <Flex flexDirection={{ base: "column", md: "row" }} justifyContent="space-between" alignItems="center">
@@ -59,7 +62,7 @@ const Contact = () => {
             </Box>
 
             {/* Other Inquiries */}
-            <Heading m="50px">Other Inquiries</Heading>
+            <Heading m="50px" textAlign="center">Other Inquiries</Heading>
             <Box m="10px auto" bg="#F7F7F7" w={{ base: "100%", md: "50%" }} p="30px">
                 <Flex flexDirection={{ base: "column", md: "row" }} justifyContent="space-between" alignItems="center">
                     <Box justifySelf="center">
@@ -72,6 +75,7 @@ const Contact = () => {
                     <Button bg="#3167FF" colorScheme="white">Email Us</Button>
                 </Flex>
             </Box>
+            <Footer />
         </>
     )
 }
