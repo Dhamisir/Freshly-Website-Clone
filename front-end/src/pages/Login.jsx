@@ -21,7 +21,7 @@ import Navbar from '../componets/Navbar';
 import Footer from '../componets/Footer';
 
 const Login = () => {
-    const { isAuth, token, isError } = useSelector(store => store.userLogin)
+    const { isAuth, isError } = useSelector(store => store.userLogin)
     const dispatch = useDispatch();
     // console.log(isAuth, token, isError, process.env.REACT_APP_MAIN_URL)
     const [email, setEmail] = useState();

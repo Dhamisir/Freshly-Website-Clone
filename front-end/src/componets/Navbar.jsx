@@ -16,7 +16,7 @@ const Navbar = () => {
             <GridItem w='100%'>
                 <Flex alignItems="center" flexDirection={{ base: "column", md: "row" }} justifyContent="space-between">
                     <Link style={{ padding: "5px" }} to="/"><Text fontSize="xl">Home</Text></Link>
-                    <Link style={{ padding: "5px" }} to="/"><Text fontSize="xl">Plan & Meal</Text></Link>
+                    <Link style={{ padding: "5px" }} to="/products"><Text fontSize="xl">Plan & Meal</Text></Link>
                     <Link style={{ padding: "5px" }} to="/"><Text fontSize="xl">
                         How it Works</Text></Link>
                     <Link style={{ padding: "5px" }} to="/"><Text fontSize="xl">Gifts</Text></Link>

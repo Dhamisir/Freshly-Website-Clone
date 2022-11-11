@@ -6,9 +6,7 @@ function App() {
     <div className="App">
       {/* only use app.js file when you working ... remove all code before push or commit  */}
 
-      {/* <Navbar /> */}
       <AllRoutes />
-      <Footer />
     </div>
   );
 }

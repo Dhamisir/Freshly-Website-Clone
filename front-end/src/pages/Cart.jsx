@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Footer from '../componets/Footer'
 import Navbar from '../componets/Navbar'
 import {
@@ -15,24 +15,43 @@ import {
     GridItem,
     Button,
     Center,
+    Image,
 } from '@chakra-ui/react'
+import { useDispatch, useSelector } from 'react-redux'
+import { cartDelete, cartShow } from '../redux/cart/cart.action'
+import { Navigate } from 'react-router-dom'
 
 
-const Details = () => {
+const Details = ({ id, no, title, img, price, count, token }) => {
+    const dispatch = useDispatch()
     return (
         <Tr>
-            <Td>inches</Td>
-            <Td>millimetres (mm)</Td>
-            <Td>millimetres (mm)</Td>
-            <Td>millimetres (mm)</Td>
-            <Td>millimetres (mm)</Td>
-            <Td>millimetres (mm)</Td>
-            <Td>millimetres (mm)</Td>
+            <Td>{no}</Td>
+            <Td><Image src={img} /></Td>
+            <Td>{title}</Td>
+            <Td>${price}</Td>
+            <Td>{count}</Td>
+            <Td>${price * count}</Td>
+            <Td onClick={() => { dispatch(cartDelete(id, { token: token })) }}><Button>Delete</Button></Td>
         </Tr>
     )
 }
 
 const Cart = () => {
+    const { isAuth, token } = useSelector(store => store.userLogin);
+    const { cart } = useSelector(store => store.cartItems);
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(cartShow({ token: token }))
+    }, [])
+
+    if (!isAuth) {
+        return <Navigate to="/login" />
+    }
+
+    console.log("cart", cart)
+
     return (
         <>
             <Navbar />
@@ -50,7 +69,9 @@ const Cart = () => {
                         </Tr>
                     </Thead>
                     <Tbody>
-                        <Details />
+                        {
+                            cart.map((ele, i) => <Details id={ele._id} no={i + 1} img={ele.product.img[0]} price={ele.product.price} count={ele.count} title={ele.product.title} token={token} />)
+                        }
                     </Tbody>
                     <Tfoot>
                         <Tr>
