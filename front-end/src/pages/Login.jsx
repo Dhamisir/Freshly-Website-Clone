@@ -17,9 +17,11 @@ import { Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from 'react';
 import { userLogin } from '../redux/userLogin/userLogin.action';
+import Navbar from '../componets/Navbar';
+import Footer from '../componets/Footer';
 
 const Login = () => {
-    const { isAuth, token, isError } = useSelector(store => store.userLogin)
+    const { isAuth, isError } = useSelector(store => store.userLogin)
     const dispatch = useDispatch();
     // console.log(isAuth, token, isError, process.env.REACT_APP_MAIN_URL)
     const [email, setEmail] = useState();
@@ -36,6 +38,7 @@ const Login = () => {
 
     return (
         <div>
+            <Navbar />
             <Flex
                 minH={"100vh"}
                 align={"center"}
@@ -98,6 +101,7 @@ const Login = () => {
                     <AlertDescription>Please Add Correct Email And Password</AlertDescription>
                 </Alert>) : ""
             }
+            <Footer />
         </div>
     );
 }

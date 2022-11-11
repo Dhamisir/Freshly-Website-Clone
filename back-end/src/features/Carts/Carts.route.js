@@ -36,7 +36,7 @@ Router.post("/add", async (req, res) =>{
 });
 
 // add product to the cart url : (http://localhost:8080/carts/get)
-Router.get("/get", async(req, res) =>{
+Router.post("/get", async(req, res) =>{
     try {
         let {token} = req.body;
         if(!token){
@@ -76,5 +76,27 @@ Router.delete("/delete/:id", async (req, res) =>{
         res.status(404).send({error : "Something Went Wrong!", mes : error});
     }
 });
+
+// add product to the cart url : (http://localhost:8080/carts/update/:id)
+Router.patch("/update/:id", async (req, res) =>{
+    try {
+        let id = req.params.id;
+        let isExists = await Cart.findOne({_id : id});
+        if(!isExists){
+            res.status(404).send({msg : "Sorry can't updated!"});
+        }
+
+        if(isExists.count > 1){
+            let update = await Cart.findByIdAndUpdate(id, {count : isExists.count - 1}, {new : true})
+            res.status(201).send({msg : "updated"})
+        }else{
+            let update = await Cart.findByIdAndDelete(id)
+            res.status(201).send({msg : "Deleted"})
+        }
+
+    } catch (error) {
+        res.status(404).send({error : "Something Went Wrong!", mes : error});
+    }
+})
 
 module.exports = Router;

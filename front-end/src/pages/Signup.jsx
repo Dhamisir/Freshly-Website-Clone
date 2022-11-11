@@ -17,6 +17,8 @@ import { Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from 'react';
 import { signupUser } from '../redux/userSignup/userSignup.action';
+import Navbar from '../componets/Navbar';
+import Footer from '../componets/Footer';
 
 const Signup = () => {
     const { isAuth, isError } = useSelector(store => store.userSignup)
@@ -49,6 +51,7 @@ const Signup = () => {
 
     return (
         <div>
+            <Navbar />
             <Flex
                 minH={"100vh"}
                 align={"center"}
@@ -137,6 +140,7 @@ const Signup = () => {
                     <AlertDescription>Please Add Correct Email And Password</AlertDescription>
                 </Alert>) : ""
             }
+            <Footer />
         </div>
     );
 }

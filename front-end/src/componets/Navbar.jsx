@@ -14,9 +14,9 @@ const Navbar = () => {
                 <Image src='https://user-images.githubusercontent.com/96005514/200733048-13b7c9b1-a830-4bff-97a8-84f50f4ab359.png' />
             </GridItem>
             <GridItem w='100%'>
-                <Flex flexDirection={{ base: "column", md: "row" }} justifyContent="space-between">
+                <Flex alignItems="center" flexDirection={{ base: "column", md: "row" }} justifyContent="space-between">
                     <Link style={{ padding: "5px" }} to="/"><Text fontSize="xl">Home</Text></Link>
-                    <Link style={{ padding: "5px" }} to="/"><Text fontSize="xl">Plan & Meal</Text></Link>
+                    <Link style={{ padding: "5px" }} to="/products"><Text fontSize="xl">Plan & Meal</Text></Link>
                     <Link style={{ padding: "5px" }} to="/"><Text fontSize="xl">
                         How it Works</Text></Link>
                     <Link style={{ padding: "5px" }} to="/"><Text fontSize="xl">Gifts</Text></Link>

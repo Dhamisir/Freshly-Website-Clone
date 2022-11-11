@@ -13,6 +13,8 @@ import {
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
+import Footer from "../../componets/Footer";
+import Navbar from "../../componets/Navbar";
 
 import { adminLogin } from "../../redux/adminLogin/adminLogin.action";
 
@@ -65,11 +67,12 @@ const AdminLogin = () => {
   }
   return (
     <div>
+      <Navbar />
       <Flex
         minH={"100vh"}
         align={"center"}
         justify={"center"}
-        //   bg={useColorModeValue('gray.50', 'gray.800')}
+      //   bg={useColorModeValue('gray.50', 'gray.800')}
       >
         <Stack
           spacing={6}
@@ -122,6 +125,7 @@ const AdminLogin = () => {
           </form>
         </Stack>
       </Flex>
+      <Footer />
     </div>
   );
 };
