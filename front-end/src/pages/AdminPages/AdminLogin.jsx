@@ -7,6 +7,8 @@ import {
   Image,
   Input,
   Stack,
+  Toast,
+  useToast,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,9 +19,10 @@ import { adminLogin } from "../../redux/adminLogin/adminLogin.action";
 const AdminLogin = () => {
   const [loginCred, setLoginCred] = useState({});
   const dispatch = useDispatch();
-  const isAuth = useSelector((store) => store.adminAuth.isAuth);
+  const { isAuth, error } = useSelector((store) => store.adminAuth);
   const { state } = useLocation();
   const naviget = useNavigate();
+  const toast = useToast();
   const hanldeChange = (e) => {
     const { name, value } = e.target;
     setLoginCred({
@@ -39,9 +42,27 @@ const AdminLogin = () => {
         naviget(state.form, { replace: true });
       } else {
         naviget("/admin");
+        toast({
+          title: "Success",
+          description: "Welcome To The Admin Dashboard",
+          status: "success",
+          duration: 2000,
+          position: "top",
+          isClosable: true,
+        });
       }
     }
   }, [isAuth]);
+  if (error) {
+    toast({
+      title: "Something Went Wrong ",
+      description: "You Are Note Admin & Enter Right Credential",
+      status: "error",
+      duration: 2000,
+      position: "top",
+      isClosable: true,
+    });
+  }
   return (
     <div>
       <Flex
