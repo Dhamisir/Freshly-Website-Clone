@@ -19,7 +19,7 @@ const Navbar = () => {
                     <Link style={{ padding: "5px" }} to="/products"><Text fontSize="xl">Plan & Meal</Text></Link>
                     <Link style={{ padding: "5px" }} to="/"><Text fontSize="xl">
                         How it Works</Text></Link>
-                    <Link style={{ padding: "5px" }} to="/"><Text fontSize="xl">Gifts</Text></Link>
+                    <Link style={{ padding: "5px" }} to="/gift"><Text fontSize="xl">Gifts</Text></Link>
                     <Link style={{ padding: "5px" }} to="/contact"><Text fontSize="xl">Contact</Text></Link>
                 </Flex>
             </GridItem>

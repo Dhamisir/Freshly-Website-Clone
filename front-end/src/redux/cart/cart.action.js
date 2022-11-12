@@ -43,7 +43,7 @@ const cartDelete = (id, token) => (dispatch) => {
 }
 
 // cartUpdate
-const cartUpdate = (id,token) => (dispatch) => {
+const cartUpdate = (id, token) => (dispatch) => {
     console.log(id, token)
     axios.patch(`${mainUrl}/carts/update/${id}`)
         .then((res) => {
@@ -55,4 +55,17 @@ const cartUpdate = (id,token) => (dispatch) => {
         })
 }
 
-export { cartShow, cartAdd, cartDelete, cartUpdate };
+// All Delete
+const AllDelete = (token) => (dispatch) => {
+    // console.log("alldelete", token)
+    axios.post(`${mainUrl}/carts/userCartDelete`, token)
+        .then((res) => {
+            console.log("success")
+            dispatch(cartShow(token))
+        })
+        .catch((err) => {
+            console.log("error")
+        })
+}
+
+export { cartShow, cartAdd, cartDelete, cartUpdate, AllDelete };

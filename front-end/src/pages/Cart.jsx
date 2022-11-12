@@ -20,7 +20,7 @@ import {
     AlertIcon,
 } from '@chakra-ui/react'
 import { useDispatch, useSelector } from 'react-redux'
-import { cartAdd, cartDelete, cartShow, cartUpdate } from '../redux/cart/cart.action'
+import { AllDelete, cartAdd, cartDelete, cartShow, cartUpdate } from '../redux/cart/cart.action'
 import { Navigate } from 'react-router-dom'
 import { useState } from 'react'
 import { useRef } from 'react'
@@ -61,6 +61,10 @@ const Cart = () => {
     console.log("cart length", cart.length)
 
     const TableFormat = () => {
+        const checkout = () => {
+            alert("Order Successfull !");
+            dispatch(AllDelete({ token: token }))
+        }
         return (
             <>
                 <TableContainer w="90%" m="50px auto">
@@ -101,7 +105,7 @@ const Cart = () => {
                     </Table>
                 </TableContainer>
                 <Center>
-                    <Button m="0px 10px" bg="#3167FF" colorScheme="white">Procide To Checkout</Button>
+                    <Button m="0px 10px" bg="#3167FF" colorScheme="white" onClick={checkout}>Procide To Checkout</Button>
                 </Center>
             </>
         )
