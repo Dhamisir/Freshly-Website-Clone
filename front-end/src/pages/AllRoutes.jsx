@@ -11,6 +11,7 @@ import AdminProduct from './AdminPages/AdminProduct';
 import AdminUser from './AdminPages/AdminUser';
 import Cart from './Cart';
 import Products from './product/Products'
+import Gift from './Gift';
 
 const AllRoutes = () => {
     return (
@@ -20,6 +21,7 @@ const AllRoutes = () => {
                 <Route path='/contact' element={<Contact />} />
                 <Route path='/signup' element={<Signup />} />
                 <Route path='/login' element={<Login />} />
+                <Route path='/gift' element={<Gift />} />
                 <Route path='/cart' element={<Cart />} />
                 <Route path='/admin' element={<AdminRequireAuth><AdminHome /></AdminRequireAuth>} />
                 <Route path='/admin-login' element={<AdminLogin />} />
@@ -40,7 +42,7 @@ const AllRoutes = () => {
                         </AdminRequireAuth>
                     }
                 ></Route>
-                <Route path='/products' element={<Products/>}> </Route>
+                <Route path='/products' element={<Products />}> </Route>
             </Routes>
         </>
     )
