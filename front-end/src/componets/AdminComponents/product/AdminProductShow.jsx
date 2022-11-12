@@ -1,115 +1,136 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Button,
   Container,
   Flex,
   Heading,
-  IconButton,
-  Image,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-  Stack,
   Table,
   TableContainer,
   Tbody,
-  Td,
   Th,
   Thead,
   Tr,
 } from "@chakra-ui/react";
-import { BsThreeDotsVertical, BsPencilFill } from "react-icons/bs";
-import { MdDelete, MdAddCircleOutline } from "react-icons/md";
+
+import { MdAddCircleOutline } from "react-icons/md";
 
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  adminShowProduct,
+  decrmeent,
+  increment,
+} from "../../../redux/AdminShowProduct/AdminShowProduct.action";
+import AdminProductShowCard from "./AdminProductShowCard";
 const AdminProductShow = () => {
+  const { adminProduct, page } = useSelector((store) => store.adminShowProduct);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(adminShowProduct(page));
+  }, [page]);
+  console.log(adminProduct);
   return (
     <div>
-      <Container maxW={"100%"}>
+      <Container maxW={"100%"} mt={"20px"}>
         <Heading textAlign={"center"}>Product</Heading>
-        <Flex justifyContent={"flex-end"}>
+        <Flex justifyContent={"space-between"}>
+          <Flex gap={"60px"}>
+            <Button
+              variant={"solid"}
+              bg={"green.700"}
+              color={"white"}
+              width={"7rem"}
+              _hover={{
+                bg: "green.600",
+              }}
+              mb={"20px"}
+              onClick={() => dispatch(decrmeent())}
+              disabled={page === 1}
+            >
+              Previous
+            </Button>
+            <Button
+              variant={"solid"}
+              bg={"green.700"}
+              color={"white"}
+              width={"7rem"}
+              _hover={{
+                bg: "green.600",
+              }}
+              mb={"20px"}
+              onClick={() => dispatch(increment())}
+              disabled={page === 4}
+            >
+              Next
+            </Button>
+          </Flex>
           <Button
             variant={"solid"}
-            colorScheme={"facebook"}
+            bg={"green.700"}
+            color={"white"}
+            _hover={{
+              bg: "green.600",
+            }}
+            mb={"20px"}
             leftIcon={<MdAddCircleOutline />}
           >
             <Link to={"/admin/addProduct"}>Add Product</Link>
           </Button>
         </Flex>
-        <TableContainer>
-          <Table variant={"unstyled"}>
+        <TableContainer boxShadow={"rgba(99, 99, 99, 0.2) 0px 2px 8px 0px"}>
+          <Table variant={"simple"}>
             <Thead>
               <Tr>
                 <Th>ID</Th>
                 <Th>Image</Th>
                 <Th>Product Name</Th>
                 <Th>Product Price</Th>
-                <Th>Time</Th>
                 <Th></Th>
               </Tr>
             </Thead>
             <Tbody>
-              <Tr _hover={{ bg: "gray.200" }}>
-                <Td>636c9517919a8ad4475755ca</Td>
-                <Td>
-                  <Image
-                    src="https://assets-global.website-files.com/5d03b4e13011831ae4624b37/636a66bb8b1f5aa9b139be56_635823f4ce492904901f973e_production-meal-image-c9eef45a-97a9-487c-9550-71488e5f639a.jpeg"
-                    width={"50%"}
-                  />
-                </Td>
-                <Td>BBQ Bison Burger</Td>
-                <Td>984 $</Td>
-                <Td>2022-11-10T06</Td>
-                <Td>
-                  <Menu>
-                    <MenuButton
-                      as={IconButton}
-                      aria-label="Options"
-                      icon={<BsThreeDotsVertical />}
-                      variant="outline"
-                    />
-                    <MenuList scale={"20px"}>
-                      <MenuItem icon={<BsPencilFill />}>Edit</MenuItem>
-                      <MenuList color={"red"}>
-                        <MenuItem icon={<MdDelete />}>Delete</MenuItem>
-                      </MenuList>
-                    </MenuList>
-                  </Menu>
-                </Td>
-              </Tr>
-              <Tr _hover={{ bg: "gray.200" }}>
-                <Td>636c9517919a8ad4475755ca</Td>
-                <Td>
-                  <Image
-                    src="https://assets-global.website-files.com/5d03b4e13011831ae4624b37/636a66bb8b1f5aa9b139be56_635823f4ce492904901f973e_production-meal-image-c9eef45a-97a9-487c-9550-71488e5f639a.jpeg"
-                    width={"50%"}
-                  />
-                </Td>
-                <Td>BBQ Bison Burger</Td>
-                <Td>984 $</Td>
-                <Td>2022-11-10T06</Td>
-                <Td>
-                  <Menu>
-                    <MenuButton
-                      as={IconButton}
-                      aria-label="Options"
-                      icon={<BsThreeDotsVertical />}
-                      variant="outline"
-                      placement="left"
-                    />
-                    <MenuList>
-                      <MenuItem icon={<BsPencilFill />}>Edit</MenuItem>
-                      <MenuList color={"red"}>
-                        <MenuItem icon={<MdDelete />}>Delete</MenuItem>
-                      </MenuList>
-                    </MenuList>
-                  </Menu>
-                </Td>
-              </Tr>
+              {adminProduct.map((item) => (
+                <AdminProductShowCard
+                  key={item._id}
+                  id={item._id}
+                  img={item.img}
+                  title={item.title}
+                  price={item.price}
+                />
+              ))}
             </Tbody>
           </Table>
         </TableContainer>
+        <Flex gap={"60px"} mt={"20px"} justifyContent={"center"}>
+          <Button
+            variant={"solid"}
+            bg={"green.700"}
+            color={"white"}
+            width={"7rem"}
+            _hover={{
+              bg: "green.600",
+            }}
+            mb={"20px"}
+            onClick={() => dispatch(decrmeent())}
+            disabled={page === 1}
+          >
+            Previous
+          </Button>
+          <Button
+            variant={"solid"}
+            bg={"green.700"}
+            color={"white"}
+            width={"7rem"}
+            _hover={{
+              bg: "green.600",
+            }}
+            mb={"20px"}
+            onClick={() => dispatch(increment())}
+            disabled={page === 4}
+          >
+            Next
+          </Button>
+        </Flex>
       </Container>
     </div>
   );

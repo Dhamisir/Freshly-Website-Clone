@@ -8,12 +8,16 @@ import { userLoginReducer } from "./userLogin/userLogin.reduer";
 import { userSignupReducer } from "./userSignup/userSignup.reduer";
 import { productReducer } from "./products/product.reducer";
 import { cartReducer } from "./cart/cart.reducer";
+import { adminAddProductReducer } from "./AdminAddProduct/adminAddProduct.reducer";
+import { adminShowProductReducer } from "./AdminShowProduct/AdminShowProduct.reducer";
 const rootReducer = combineReducers({
   adminAuth: adminReducer,
   userLogin: userLoginReducer,
   userSignup: userSignupReducer,
   product: productReducer,
-  cartItems: cartReducer
+  cartItems: cartReducer,
+  adminAddProduct:adminAddProductReducer,
+  adminShowProduct:adminShowProductReducer,
 });
 const createComposer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
