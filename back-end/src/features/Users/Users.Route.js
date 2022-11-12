@@ -56,5 +56,16 @@ Router.post("/login", async (req, res) => {
     }
 });
 
+// Get all the user to the admin page at url (http://localhost:8080/users/allUser)
+Router.get("/allUser", async (req, res) =>{
+    try {
+        let allUses = await User.find();
+        if(allUses){
+            res.status(201).send(allUses);
+        }
+    } catch (error) {
+        res.status(404).send({ error: "Something Went Wrong!" });
+    }
+})
 
 module.exports = Router;

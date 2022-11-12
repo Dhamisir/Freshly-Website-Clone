@@ -97,6 +97,26 @@ Router.patch("/update/:id", async (req, res) =>{
     } catch (error) {
         res.status(404).send({error : "Something Went Wrong!", mes : error});
     }
-})
+});
+
+// delete all cart items to the cart url : (http://localhost:8080/carts/userCartDelete)
+Router.post("/userCartDelete", async (req, res) =>{
+    try {
+        let {token} = req.body;
+        if(!token){
+            res.status(404).send({error : "Sorry!"});
+        }
+        let getValue = token.split(":");
+        let userId = getValue[0];
+
+        let userCartDelete = await Cart.deleteMany({userId});
+        if(userCartDelete){
+            res.status(404).send("Delete Successfully")
+        }
+
+    } catch (error) {
+        res.status(404).send({error : "Something Went Wrong!", mes : error});
+    }
+});
 
 module.exports = Router;
