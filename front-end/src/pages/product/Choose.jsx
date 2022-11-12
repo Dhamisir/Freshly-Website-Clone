@@ -2,6 +2,11 @@ import React from "react";
 import { Flex, Box, Button, Heading, Text, Select } from "@chakra-ui/react";
 
 const Choose = () => {
+
+const sorting=()=>{
+  console.log("sorting")
+}
+
   return (
     <Box padding={"1rem"}>
       <Box
@@ -20,15 +25,17 @@ const Choose = () => {
           week’s dishes and start eating better:
         </Text>
       </Box>
-      <Box display={"flex"} m="2rem" justifyContent="center" gap={"10px"}>
+      <Box display={"flex"} mt="2rem" justifyContent="center" gap={"10px"}>
         <Text alignSelf={"center"} color="gray">Meal Category : </Text>
-        <Select alignSelf={"center"} width={"20%"} size={{lg:"sm",base:"xs",sm:"xs"}}  placeholder="Select option">
+
+
+        {/* <Select alignSelf={"center"} id="sort" onChange={sorting} width={"20%"} size={{lg:"sm",base:"xs",sm:"xs"}}  placeholder="Select option">
           <option value="all meals">All Meals</option>
-          <option value="purely plant">Purely Plant</option>
-          <option value="signature collection">Signature Collection</option>
-          <option value="freshly fits">Freshly Fits</option>
-          <option value="proteins & sides">Proteins & Sides</option>
-        </Select>
+          <option value="low">Price (Low - High)</option>
+          <option value="high">Price (High - Low)</option>
+          {/* <option value="freshly fits">Freshly Fits</option>
+          <option value="proteins & sides">Proteins & Sides</option> */}
+        {/* </Select> */} 
       </Box>
     </Box>
   );

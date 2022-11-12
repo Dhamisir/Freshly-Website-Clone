@@ -11,7 +11,7 @@ import AdminProduct from './AdminPages/AdminProduct';
 import AdminUser from './AdminPages/AdminUser';
 import Cart from './Cart';
 import Products from './product/Products'
-
+import About from './AboutPages/About';
 const AllRoutes = () => {
     return (
         <>
@@ -41,6 +41,7 @@ const AllRoutes = () => {
                     }
                 ></Route>
                 <Route path='/products' element={<Products/>}> </Route>
+                <Route path='/about' element={<About/>}> </Route>
             </Routes>
         </>
     )
