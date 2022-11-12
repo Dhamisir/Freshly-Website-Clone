@@ -109,7 +109,7 @@ Router.post("/userCartDelete", async (req, res) =>{
         let getValue = token.split(":");
         let userId = getValue[0];
 
-        let userCartDelete = await Cart.findByIdAndDelete({userId});
+        let userCartDelete = await Cart.deleteMany({userId});
         if(userCartDelete){
             res.status(404).send("Delete Successfully")
         }
