@@ -24,12 +24,12 @@ import { getproducts } from "../../redux/products/product.actions";
 import { singleGet } from "../../redux/products/product.actions";
 import { Navigate } from 'react-router-dom'
 import { cartAdd, cartShow } from '../../redux/cart/cart.action'
- 
+
 const ShowProducts = () => {
   const [show, setShow] = useState(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { data, singleData } = useSelector((store) => store.product);
- const { isAuth, token } = useSelector(store => store.userLogin);
+  const { isAuth, token } = useSelector(store => store.userLogin);
   const { cart } = useSelector(store => store.cartItems);
   const dispatch = useDispatch();
 
@@ -38,13 +38,13 @@ const ShowProducts = () => {
     dispatch(singleGet(show));
     dispatch(cartShow({ token: token }))
   }, []);
-  
-  
+
+
   if (!isAuth) {
     return <Navigate to="/login" />
   }
 
-    const checkCart = (id) => {
+  const checkCart = (id) => {
     for (let i = 0; i < cart.length; i++) {
       if (cart[i].productId == id) {
         return true
@@ -52,7 +52,7 @@ const ShowProducts = () => {
     }
     return false;
   }
-    
+
   return (
     <>
       <Grid
@@ -97,8 +97,6 @@ const ShowProducts = () => {
                 )
             }
           </Box>
-      </Grid>
-          </Box>
         ))}
       </Grid>
       <Modal isOpen={isOpen} onClose={onClose}>
@@ -110,14 +108,8 @@ const ShowProducts = () => {
             <Image src={singleData.img} />
             <Text>{singleData.description}</Text>
             <Heading size={"sm"}>Price - $ {singleData.price}</Heading>
-            <Heading size={"sm"}>Rating - {singleData.rating}</Heading>        
+            <Heading size={"sm"}>Rating - {singleData.rating}</Heading>
           </ModalBody>
-          <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
-              Close
-            </Button>
-            <Button  m={"10px"} colorScheme={"blue"} >Add to Cart</Button>
-          </ModalFooter>
         </ModalContent>
       </Modal>
     </>
