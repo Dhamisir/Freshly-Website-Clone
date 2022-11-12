@@ -61,7 +61,7 @@ const HomeTop = () => {
           display={{ lg: "block", md: "block", sm: "none", base: "none" }}
           colorScheme={"blue"}
 
-          border="2px solid blue"
+        
         >
           Expore Meals
         </Button>
