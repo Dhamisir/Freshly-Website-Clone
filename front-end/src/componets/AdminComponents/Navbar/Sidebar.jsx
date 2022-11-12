@@ -5,8 +5,8 @@ import { BsFillCartFill, BsFillHddStackFill } from "react-icons/bs";
 import { FaUserAlt } from "react-icons/fa";
 import NavItem from "./NavItem";
 const LinkItems = [
-  { name: "Dashboard", icon: BsFillHddStackFill, link: "/admin" },
-  { name: "Product", icon: BsFillCartFill, link: "/admin/product" },
+  // { name: "Dashboard", icon: BsFillHddStackFill, link: "/admin" },
+  { name: "Product", icon: BsFillCartFill, link: "/admin" },
   { name: "user", icon: FaUserAlt, link: "/admin/user" },
   { name: "Settings", icon: FiSettings, link: "/admin/setings" },
 ];

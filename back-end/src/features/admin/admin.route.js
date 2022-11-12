@@ -18,7 +18,7 @@ router.post("/signup", async (req, res) => {
         role,
         avtar,
       });
-      if(admin){
+      if (admin) {
         res.send("Sign-Up Successfully!");
       }
     }

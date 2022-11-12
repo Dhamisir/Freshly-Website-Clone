@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Multiselect from "multiselect-react-dropdown";
 import { ingredientsData } from "./ingredients";
 import {
@@ -14,8 +14,11 @@ import {
   InputLeftAddon,
   Stack,
   Textarea,
+  useToast,
   VStack,
 } from "@chakra-ui/react";
+import { useDispatch, useSelector } from "react-redux";
+import { adminAddP } from "../../../redux/AdminAddProduct/adminAddProduct.action";
 
 const ingredientsTypsof = [
   "Gluten Free",
@@ -28,9 +31,16 @@ const ingredientsTypsof = [
 ];
 const AdminAddNewProduct = () => {
   const [Product, setProduct] = useState([]);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState({});
   const [ingredients, srtIngredients] = useState([]);
   const [ingredientsTyps, setIngredientsTyps] = useState([]);
+  const toast = useToast();
+
+  const { productData } = useSelector(
+    (store) => store.adminAddProduct.productData
+  );
+  const dispatch = useDispatch();
+
   const hanldeChange = (e) => {
     const { name, value } = e.target;
     setProduct({
@@ -41,8 +51,19 @@ const AdminAddNewProduct = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setData({ ...Product, ingredients, ingredientsTyps });
+    dispatch(adminAddP(data));
+    add();
   };
-  //   console.log(data);
+  const add = () => {
+    toast({
+      title: "Product Add",
+      status: "success",
+      isClosable: true,
+      duration: 2000,
+      position: "top",
+    });
+  };
+  console.log(data);
   return (
     <div>
       <Stack
@@ -198,6 +219,8 @@ const AdminAddNewProduct = () => {
                   <FormLabel>Ingredients</FormLabel>
                   <Multiselect
                     options={ingredientsData}
+                    closeOnSelect={true}
+                    closeIcon={"circle"}
                     displayValue="ingredientsName"
                     showCheckbox
                     onSelect={(e) => {
@@ -216,6 +239,7 @@ const AdminAddNewProduct = () => {
                     isObject={false}
                     options={ingredientsTypsof}
                     showCheckbox
+                    closeIcon={"circle"}
                     onSelect={(e) => {
                       setIngredientsTyps(e);
                     }}
@@ -231,7 +255,11 @@ const AdminAddNewProduct = () => {
               <Button
                 w={"20%"}
                 size="lg"
-                colorScheme={"facebook"}
+                bg={"green.700"}
+                color={"white"}
+                _hover={{
+                  bg: "green.600",
+                }}
                 type={"submit"}
               >
                 Submit

@@ -25,6 +25,7 @@ import { singleGet } from "../../redux/products/product.actions";
 import { Navigate } from "react-router-dom";
 import { cartAdd, cartShow } from "../../redux/cart/cart.action";
 
+
 const check = {
   _id: "",
   title: "",
@@ -47,16 +48,20 @@ const check = {
   protein: 0,
 };
 
+
 const ShowProducts = () => {
   const [show, setShow] = useState(check);
   const { isOpen, onOpen, onClose } = useDisclosure();
+
   const { data } = useSelector((store) => store.product);
   const [productItems, setProductItems] = useState([]);
+
   const { isAuth, token } = useSelector((store) => store.userLogin);
   const { cart } = useSelector((store) => store.cartItems);
   const dispatch = useDispatch();
 
   useEffect(() => {
+
     dispatch(getproducts()).then((items) => {
       // console.log("inside dispatch", res);
       setProductItems(items);
@@ -67,6 +72,7 @@ const ShowProducts = () => {
   }, []);
 
   console.log("prodyct", productItems);
+
 
   if (!isAuth) {
     return <Navigate to="/login" />;
@@ -81,6 +87,7 @@ const ShowProducts = () => {
     return false;
   };
 
+
   const sortingProduct = (e) => {
     if (e.target.value == "low") {
       productItems.sort((a, b) => a.price - b.price);
@@ -91,6 +98,7 @@ const ShowProducts = () => {
     let updateItems = [...productItems];
     setProductItems(updateItems);
   };
+
 
   return (
     <>
@@ -173,6 +181,7 @@ const ShowProducts = () => {
           <ModalHeader>{show.title}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
+
             <Image src={show.img} />
             <Text>
               Ingredients :{" "}
@@ -221,6 +230,7 @@ const ShowProducts = () => {
               <Heading size={"sm"}>Rating - {show.rating}</Heading>
             </Flex>
           </ModalBody>
+
         </ModalContent>
       </Modal>
     </>
