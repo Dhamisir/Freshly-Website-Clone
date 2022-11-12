@@ -117,16 +117,16 @@ Router.patch("/update/:id", async (req, res) =>{
 Router.delete("/delete/:id", async (req, res) =>{
    try {
       let _id = req.params.id;
-      let {token} = req.body;
-      if(!token){
-         res.status(404).send("You are not Admin!");
-      }
-      let getValue = token.split(":");
-      let adminId = getValue[0];
-      let role = getValue[1];
-      if(role != "admin"){
-         res.status(404).send("You are not Admin!");
-      }
+      // let {token} = req.body;
+      // if(!token){
+      //    res.status(404).send("You are not Admin!");
+      // }
+      // let getValue = token.split(":");
+      // let adminId = getValue[0];
+      // let role = getValue[1];
+      // if(role != "admin"){
+      //    res.status(404).send("You are not Admin!");
+      // }
       let isProducts = await Product.findOne({_id});
       if(isProducts){
          if(isProducts.adminId == adminId){
