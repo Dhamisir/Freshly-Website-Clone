@@ -61,14 +61,14 @@ Router.post("/get", async(req, res) =>{
 // add product to the cart url : (http://localhost:8080/carts/delete)
 Router.delete("/delete/:id", async (req, res) =>{
     try {
-        let {token} = req.body; 
-        let _id = req.params.id;
-        if(!token){
-            res.status(404).send({error : "Sorry!"});
-        }
-        let getValue = token.split(":");
-        let userId = getValue[0];
-        let isCheck = await Cart.findOneAndDelete({_id, userId});
+        // let {token} = req.body; 
+        let id = req.params.id;
+        // if(!token){
+        //     res.status(404).send({error : "Sorry!"});
+        // }
+        // let getValue = token.split(":");
+        // let userId = getValue[0];
+        let isCheck = await Cart.findOneAndDelete(id);
         if(isCheck){
             res.status(201).send("Deleted Successfully!");
         }
