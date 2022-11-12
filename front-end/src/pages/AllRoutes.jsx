@@ -13,7 +13,13 @@ import Cart from "./Cart";
 import Products from "./product/Products";
 import AdminAddProduct from "./AdminPages/AdminAddProduct";
 
+import About from './AboutPages/About';
+
+import Gift from './Gift';
+
+
 const AllRoutes = () => {
+
   return (
     <>
       <Routes>
@@ -63,5 +69,6 @@ const AllRoutes = () => {
     </>
   );
 };
+
 
 export default AllRoutes;

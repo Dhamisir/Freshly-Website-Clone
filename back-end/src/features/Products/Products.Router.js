@@ -167,6 +167,7 @@ Router.patch("/update/:id", async (req, res) => {
 });
 
 // Get The all Products into the database at url (http://localhost:8080/products/delete)
+
 Router.delete("/delete/:id", async (req, res) => {
   try {
     let id = req.params.id;
@@ -188,6 +189,7 @@ Router.delete("/delete/:id", async (req, res) => {
 
       if (deleteProduct) {
         res.status(201).send(product);
+
       }
       // } else {
       //   res.status(404).send("Product Not Exists!");
