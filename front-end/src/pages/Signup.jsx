@@ -80,7 +80,7 @@ const Signup = () => {
                         <FormControl id="email" isRequired pb={"20px"}>
                             <FormLabel fontSize={"18px"}>First name</FormLabel>
                             <Input
-                                placeholder="your-email@nextfood.com"
+                                placeholder="first name"
                                 _placeholder={{ color: "gray.500" }}
                                 name="first_name"
                                 type="text"
@@ -91,7 +91,7 @@ const Signup = () => {
                         <FormControl id="email" isRequired pb={"20px"}>
                             <FormLabel fontSize={"18px"}>Last Name</FormLabel>
                             <Input
-                                placeholder="your-email@nextfood.com"
+                                placeholder="last name"
                                 _placeholder={{ color: "gray.500" }}
                                 type="text"
                                 name="last_name"
@@ -102,7 +102,7 @@ const Signup = () => {
                         <FormControl id="email" isRequired pb={"20px"}>
                             <FormLabel fontSize={"18px"}>Email address</FormLabel>
                             <Input
-                                placeholder="your-email@nextfood.com"
+                                placeholder="your-email@gmail.com"
                                 _placeholder={{ color: "gray.500" }}
                                 type="email"
                                 name="email"

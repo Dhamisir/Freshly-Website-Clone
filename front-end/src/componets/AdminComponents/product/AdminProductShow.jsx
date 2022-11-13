@@ -126,7 +126,7 @@ const AdminProductShow = () => {
             }}
             mb={"20px"}
             onClick={() => dispatch(increment())}
-            disabled={page === 4}
+            disabled={page === 5}
           >
             Next
           </Button>

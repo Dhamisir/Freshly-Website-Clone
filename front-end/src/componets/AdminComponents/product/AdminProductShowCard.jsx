@@ -8,7 +8,7 @@ import {
   Td,
   Tr,
 } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { BsThreeDotsVertical, BsPencilFill } from "react-icons/bs";
 import { MdDelete } from "react-icons/md";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,11 +18,10 @@ import {
 } from "../../../redux/AdminShowProduct/AdminShowProduct.action";
 const AdminProductShowCard = ({ id, img, title, price }) => {
   const { adminProduct, page } = useSelector((store) => store.adminShowProduct);
-  const [ref, setRef] = useState(true);
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(adminShowProduct(page));
-  }, [page, id]);
+  // useEffect(() => {
+  //   dispatch(adminShowProduct(page));
+  // }, [page, id]);
   return (
     <Tr
       _hover={{

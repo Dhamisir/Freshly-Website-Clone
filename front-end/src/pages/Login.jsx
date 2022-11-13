@@ -67,7 +67,7 @@ const Login = () => {
                         <FormControl id="email" isRequired pb={"20px"}>
                             <FormLabel fontSize={"18px"}>Email address</FormLabel>
                             <Input
-                                placeholder="your-email@nextfood.com"
+                                placeholder="your-email@gmail.com"
                                 _placeholder={{ color: "gray.500" }}
                                 type="email"
                                 value={email}
