@@ -10,7 +10,7 @@ export const adminAddP = (data) => async (dispatch) => {
   try {
     let res = await axios.post(`${mainUrl}/products/post`, cred);
     dispatch({ type: ADMIN_ADD_PRODUCT, payload: res.data });
-    console.log(res.data);
+    // console.log(res.data);
 
     return res.data;
   } catch (error) {

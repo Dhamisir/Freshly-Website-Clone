@@ -20,7 +20,7 @@ export const adminShowProduct = (page) => async (dispatch) => {
       cred
     );
     dispatch({ type: ADMIN_SHOW_PRODUCT, payload: res.data });
-    console.log(res.data);
+    // console.log(res.data);
 
     return res.data;
   } catch (error) {
@@ -34,7 +34,7 @@ export const deleteProduct = (id) => async (dispatch) => {
   try {
     let res = await axios.delete(`${mainUrl}/products/delete/${id}`);
     dispatch({ type: ADMIN_DELETE_PRODUCT, payload: res.data });
-    console.log(res.data);
+    // console.log(res.data);
     return res.data;
   } catch (error) {
     console.log(error.masseg);

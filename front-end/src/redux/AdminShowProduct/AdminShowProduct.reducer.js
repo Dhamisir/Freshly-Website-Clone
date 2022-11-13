@@ -8,7 +8,6 @@ import {
 const initialValue = {
   adminProduct: [],
   page: 1,
-  newData: [],
 };
 export const adminShowProductReducer = (
   state = initialValue,

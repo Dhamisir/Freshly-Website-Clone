@@ -13,13 +13,11 @@ import Cart from "./Cart";
 import Products from "./product/Products";
 import AdminAddProduct from "./AdminPages/AdminAddProduct";
 
-import About from './AboutPages/About';
+import About from "./AboutPages/About";
 
-import Gift from './Gift';
-
+import Gift from "./Gift";
 
 const AllRoutes = () => {
-
   return (
     <>
       <Routes>
@@ -28,6 +26,8 @@ const AllRoutes = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/gift" element={<Gift />} />
+        <Route path="/about" element={<About />} />
         {/* <Route
           path="/admin"
           element={
@@ -69,6 +69,5 @@ const AllRoutes = () => {
     </>
   );
 };
-
 
 export default AllRoutes;
