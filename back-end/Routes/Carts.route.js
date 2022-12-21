@@ -1,8 +1,8 @@
 const express = require("express");
-const { find, findOne, findByIdAndUpdate } = require("./Carts.module");
+const { find, findOne, findByIdAndUpdate } = require("../Models/Carts.module");
 const Router = express.Router();
-const Cart = require("./Carts.module");
-const Product = require("../Products/Products.module");
+const Cart = require("../Models/Carts.module");
+const Product = require("../Models/Products.module");
 
 // add product to the cart url : (http://localhost:8080/carts/add)
 Router.post("/add", async (req, res) => {

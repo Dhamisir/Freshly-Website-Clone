@@ -1,5 +1,5 @@
 const express = require("express");
-const Admin = require("./admin.model");
+const Admin = require("../Models/admin.model");
 const router = express.Router();
 
 // Admin signup
