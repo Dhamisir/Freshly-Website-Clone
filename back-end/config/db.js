@@ -1,12 +1,13 @@
+require("dotenv");
 const mongoose = require("mongoose");
 const url =
   process.env.DATABASE_URL ||
-  `mongodb+srv://sophisticated-legs-486:sophisticated-legs-486@cluster0.kuwseoo.mongodb.net/`;
+  `mongodb+srv://arjun:arjun@cluster0.yv7wj4c.mongodb.net/sophisticated-legs-486?retryWrites=true&w=majority`;
 //   local
 const localUrl = "mongodb://127.0.0.1:27017/";
 const connection = () => {
   mongoose
-    .connect(`${url}sophisticated-legs-486`)
+    .connect(`${url}`)
     .then(() => {
       console.log("Connection Successful!");
     })

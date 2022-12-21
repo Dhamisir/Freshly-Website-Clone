@@ -1,7 +1,7 @@
 const express = require("express");
 const Router = express.Router();
 //Import Products Module
-const Product = require("./Products.module");
+const Product = require("../Models/Products.module");
 
 // Get The all Products into the database at url (http://localhost:8080/products/get)
 Router.get("/get", async (req, res) => {

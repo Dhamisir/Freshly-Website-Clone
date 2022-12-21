@@ -2,7 +2,7 @@ const express = require("express");
 const Router = express.Router();
 
 //Import Users Module
-const User = require("./Users.model");
+const User = require("../Models/Users.model");
 
 // User Sign-up at url (http://localhost:8080/users/signup)
 Router.post("/signup", async (req, res) => {
