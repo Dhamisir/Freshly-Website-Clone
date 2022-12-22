@@ -1,10 +1,11 @@
-import { USER_LOGIN, USER_LOGIN_ERROR, USER_LOGOUT } from "./userLogin.type";
+import { USER_LOGIN,IS_LOADING, USER_LOGIN_ERROR, USER_LOGOUT } from "./userLogin.type";
 
 const userToken = localStorage.getItem("userToken")
 const initialState = {
     isAuth: !!userToken,
     token: userToken || "",
-    isError: false
+    isError: false,
+    isLoading: false
 }
 
 export const userLoginReducer = (state = initialState, { type, payload }) => {
@@ -15,24 +16,33 @@ export const userLoginReducer = (state = initialState, { type, payload }) => {
                 ...state,
                 isAuth: true,
                 token: payload,
-                isError: false
+                isError: false,
+                isLoading:false
             }
         }
 
+        case IS_LOADING:{
+             return {
+                ...state,
+                isLoading: true,
+             }
+        }
         case USER_LOGOUT: {
             localStorage.removeItem("userToken")
             return {
                 ...state,
                 isAuth: false,
                 token: "",
-                isError: false
+                isError: false,
+                isLoading:false
             }
         }
 
         case USER_LOGIN_ERROR: {
             return {
                 ...state,
-                isError: true
+                isError: true,
+                isLoading:false
             }
         }
 

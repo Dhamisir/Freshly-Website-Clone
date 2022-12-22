@@ -9,6 +9,7 @@ const initialState = {
 }
 
 export const userSignupReducer = (state = initialState, { type, payload }) => {
+    
     switch (type) {
         case USER_SIGNUP: {
             return {
@@ -37,6 +38,7 @@ export const userSignupReducer = (state = initialState, { type, payload }) => {
                 isLoading : true
             }
         }
+
         case ISACTIVE :{
             return {
                 ...state,
