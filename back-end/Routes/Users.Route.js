@@ -11,22 +11,22 @@ Router.post("/signup", async (req, res) => {
 
     //Check if any input field is empty
     if (!email || !password || !first_name || !last_name) {
-      res.status(404).send("Opps! Fill The all input field");
+      res.status(404).send({msg : "Opps! Fill The all input field"});
     }
 
     let isEmail = await User.findOne({ email });
     //Check if the email exists
 
     if (isEmail) {
-      res.status(201).send({ msg: "This Email Already Exists!" });
+      res.status(404).send({ msg: "This Email Already Exists!" });
     }
 
     let user = await User.create(req.body);
-    res.status(201).send(user);
+    res.status(200).send({msg : "Signup Successfully"});
   } catch (error) {
     res
       .status(404)
-      .send({ error: "Something Went Wrong!", backendError: error });
+      .send({ msg: "Something Went Wrong!", backendError: error });
   }
 });
 
@@ -36,16 +36,16 @@ Router.post("/login", async (req, res) => {
     let { email, password } = req.body;
     //Check if any input field is empty
     if (!email || !password) {
-      res.status(404).send("Opps! Fill The all input field");
+      res.status(404).send({msg : "Opps! Fill The all input field"});
     }
     let isEmail = await User.findOne({ email });
     //Check if the email exists
     if (!isEmail) {
-      res.status(404).send("Opps! You have to login first!");
+      res.status(404).send({msg : "Opps! You have to login first!"});
     }
     //Check if password is wrong
     if (isEmail.password !== password) {
-      res.status(404).send("Wrong Password");
+      res.status(404).send();
     }
     let token = `${isEmail._id}:${isEmail.role}`;
 
