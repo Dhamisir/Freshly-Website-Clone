@@ -21,7 +21,7 @@ import Navbar from '../componets/Navbar';
 import Footer from '../componets/Footer';
 
 const Login = () => {
-    const { isAuth, isError } = useSelector(store => store.userLogin)
+    const { isAuth, isError, isLoading } = useSelector(store => store.userLogin)
     const dispatch = useDispatch();
     // console.log(isAuth, token, isError, process.env.REACT_APP_MAIN_URL)
     const [email, setEmail] = useState();
@@ -78,19 +78,65 @@ const Login = () => {
                             <FormLabel fontSize={"18px"}>Password</FormLabel>
                             <Input type="password" name="password" onChange={(e) => { setPassword(e.target.value) }} />
                         </FormControl>
-                        <Stack spacing={6} alignItems={"center"}>
-                            <Button
+                         <Stack spacing={6} alignItems={"center"}>
+                            {/* <Button
+                                 isLoading 
+                                loadingText='Loading'
                                 width={"200px"}
                                 bg={"green.700"}
                                 color={"white"}
+                                // variant='outline'
+                                //   spinnerPlacement='start'
                                 _hover={{
                                     bg: "green.600",
                                 }}
                                 type="submit"
                             >
+                              
                                 Login
-                            </Button>
-                        </Stack>
+                            </Button> */}
+
+{
+                                isLoading? 
+                                <Button
+                                 isLoading 
+                                loadingText='Loading'
+                                width={"200px"}
+                                bg={"green.700"}
+                                color={"white"}
+                                variant='outline'
+                                  spinnerPlacement='start'
+                                _hover={{
+                                    bg: "green.600",
+                                }}
+                                type="submit"
+                            >
+                              
+                                Login
+                            </Button> 
+                                
+                                : 
+                                <Button
+                                // isLoading 
+                            //    loadingText='Loading'
+                               width={"200px"}
+                               bg={"green.700"}
+                               color={"white"}
+                               // variant='outline'
+                               //   spinnerPlacement='start'
+                               _hover={{
+                                   bg: "green.600",
+                               }}
+                               type="submit"
+                           >
+                             
+                               Login
+                           </Button>
+}
+                        </Stack> 
+
+
+
                     </form>
                 </Stack>
             </Flex>

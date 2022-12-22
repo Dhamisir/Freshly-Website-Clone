@@ -26,6 +26,7 @@ const Signup = () => {
     const { isAuth, isError, isErrorMsg, isActive, isLoading } = useSelector(store => store.userSignup)
     const dispatch = useDispatch();
     const toast = useToast()
+
     // console.log(isAuth, token, isError, process.env.REACT_APP_MAIN_URL)
     const [form, setForm] = useState({
         first_name: "",
@@ -95,6 +96,7 @@ const Signup = () => {
                         }
                         width={"30%"}
                     />
+
                     <Heading lineHeight={1.1} fontSize={{ base: "2xl", md: "3xl" }}>
                         User
                     </Heading>
@@ -134,9 +136,10 @@ const Signup = () => {
                         </FormControl>
                         <FormControl id="password" isRequired pb={"20px"}>
                             <FormLabel fontSize={"18px"}>Password</FormLabel>
-                            <Input type="password" name="password"
-                                value={form.password}
-                                onChange={handleChange} />
+                            <Input type="password"
+                             name="password"
+                             value={form.password}
+                             onChange={handleChange} />
                         </FormControl>
 
                         <Stack spacing={6} alignItems={"center"}>
