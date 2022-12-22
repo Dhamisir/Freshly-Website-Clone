@@ -8,7 +8,7 @@ router.post("/signup", async (req, res) => {
   try {
     let existingUser = await Admin.findOne({ email });
     if (existingUser) {
-      res.status(404).send("Connot create an user with exist");
+      res.status(404).send({msg : "Connot create an user with exist"});
     } else {
       let admin = await Admin.create({
         email,
@@ -19,11 +19,11 @@ router.post("/signup", async (req, res) => {
         avtar,
       });
       if (admin) {
-        res.send("Sign-Up Successfully!");
+        res.send({msg : "Sign-Up Successfully!"});
       }
     }
   } catch (error) {
-    res.status(404).send(e.massege);
+    res.status(500).send({msg : e.massege});
   }
 });
 
@@ -34,18 +34,18 @@ router.post("/login", async (req, res) => {
     let admin = await Admin.findOne({ email });
     if (admin) {
       if (password === admin.password) {
-        res.send({
+        res.status(200).send({
           token: `${admin._id}:${admin.role}`,
           admin,
         });
       } else {
-        res.status(404).send("you are not admin,incorrect password");
+        res.status(404).send({msg : "you are not admin,incorrect password"});
       }
     } else {
-      res.status(404).send(`Admin this ${email} id note found`);
+      res.status(404).send({msg : `Admin this ${email} id note found`});
     }
   } catch (error) {
-    res.status(404).send(error.massege);
+    res.status(500).send({msg : error.massege});
   }
 });
 module.exports = router;

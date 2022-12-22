@@ -7,9 +7,9 @@ const Product = require("../Models/Products.module");
 Router.get("/get", async (req, res) => {
   try {
     let allProducts = await Product.find();
-    res.status(201).send(allProducts);
+    res.status(200).send(allProducts);
   } catch (error) {
-    res.status(404).send({ error: "Something Went Wrong!" });
+    res.status(500).send({ msg: "Something Went Wrong!" });
   }
 });
 
@@ -36,7 +36,7 @@ Router.post("/post", async (req, res) => {
     let adminId = getValue[0];
     let role = getValue[1];
     if (!token) {
-      res.status(404).send("You are not Admin!");
+      res.status(404).send({msg : "You are not Admin!"});
     }
     //  if (
     //    !subImg ||
@@ -53,7 +53,7 @@ Router.post("/post", async (req, res) => {
     //    res.status(404).send("Plz Fill the all input!");
     //  }
     if (role !== "admin") {
-      res.status(404).send("You cun't add products");
+      res.status(404).send({msg : "You cun't add products"});
     }
     let product = await Product.create({
       title,
@@ -73,13 +73,15 @@ Router.post("/post", async (req, res) => {
     });
     if (product) {
       res.status(201).send(product);
+    }else{
+      res.status(404).send({msg : "Sorry! You can't add Product"});
     }
   } catch (error) {
-    res.status(404).send({ error: "Something Went Wrong!" });
+    res.status(500).send({ msg : "Something Went Wrong!" });
   }
 });
 
-// Get The all Products into the database at url (http://localhost:8080/products/update)
+// Update Products into the database at url (http://localhost:8080/products/update)
 Router.patch("/update/:id", async (req, res) => {
   try {
     //  let product = await Product.findByIdAndRemove();
@@ -99,13 +101,13 @@ Router.patch("/update/:id", async (req, res) => {
       calorie,
     } = req.body;
     if (!token) {
-      res.status(404).send("You are not Admin!");
+      res.status(404).send({msg : "You are not Admin!"});
     }
     let getValue = token.split(":");
     let adminId = getValue[0];
     let role = getValue[1];
     if (role !== "admin") {
-      res.status(404).send("You cun't update products");
+      res.status(404).send({msg : "You cun't update products"});
     }
     let isProducts = await Product.findOne({ _id: id });
     if (isProducts) {
@@ -152,17 +154,17 @@ Router.patch("/update/:id", async (req, res) => {
 
         ////////////////////////////////////////////////////////////////////////////////
         if (update) {
-          res.status(201).send("Update Successfully!");
+          res.status(200).send({msg : "Update Successfully!"});
         }
       } else {
-        res.status(404).send("Product Not Exists!");
+        res.status(404).send({msg : "Product Not Exists!"});
       }
     } else {
-      res.status(404).send("Product Not Exists!");
+      res.status(404).send({msg : "Product Not Exists!"});
     }
     res.status(201).send(product);
   } catch (error) {
-    res.status(404).send({ error: "Something Went Wrong!", backendErr: error });
+    res.status(404).send({ msg : "Something Went Wrong!", error });
   }
 });
 
@@ -188,19 +190,19 @@ Router.delete("/delete/:id", async (req, res) => {
       let deleteProduct = await Product.findByIdAndDelete(id, { new: true });
 
       if (deleteProduct) {
-        res.status(201).send(product);
+        res.status(200).send(product);
 
       }
       // } else {
       //   res.status(404).send("Product Not Exists!");
       // }
     } else {
-      res.status(404).send("Product Not Exists!");
+      res.status(404).send({msg : "Product Not Exists!"});
     }
 
     //  let product = await Product.findByIdAndDelete({_id, adminId});
   } catch (error) {
-    res.status(404).send({ error: "Something Went Wrong!" });
+    res.status(500).send({ msg: "Something Went Wrong!" });
   }
 });
 
@@ -210,24 +212,24 @@ Router.post("/get/admin", async (req, res) => {
   try {
     let { token } = req.body;
     if (!token) {
-      res.status(404).send("You are not Admin!");
+      res.status(404).send({msg : "You are not Admin!"});
     }
     let getValue = token.split(":");
     let adminId = getValue[0];
     let role = getValue[1];
     if (role != "admin") {
-      res.status(404).send("You are not Admin!");
+      res.status(404).send({msg : "You are not Admin!"});
     }
     let adminProducts = await Product.find({ adminId })
       .limit(limit)
       .skip((page - 1) * limit);
     if (adminProducts.length > 0) {
-      res.status(201).send(adminProducts);
+      res.status(200).send(adminProducts);
     } else {
-      res.status(404).send("Plz add a Product First!");
+      res.status(404).send({msg : "Plz add a Product First!"});
     }
   } catch (error) {
-    res.status(404).send({ error: "Something Went Wrong!" });
+    res.status(404).send({ msg: "Something Went Wrong!" });
   }
 });
 
@@ -237,12 +239,12 @@ Router.get("/singleGet/:id", async (req, res) => {
     let id = req.params.id;
     let isExists = await Product.findById(id);
     if (isExists) {
-      res.status(201).send(isExists);
+      res.status(200).send(isExists);
     } else {
-      res.status(401).send("Sorry!");
+      res.status(404).send({msg : "Sorry! Product Not Found!"});
     }
   } catch (error) {
-    res.status(404).send({ error: "Something Went Wrong!" });
+    res.status(500).send({ msg: "Something Went Wrong!" });
   }
 });
 
