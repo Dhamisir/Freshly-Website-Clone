@@ -1,9 +1,11 @@
-import { USER_SIGNUP, USER_SIGNUP_ERROR } from "./userSignup.type"
+import { USER_SIGNUP, USER_SIGNUP_ERROR, USER_LOADING, ISACTIVE } from "./userSignup.type"
 
 const initialState = {
     isAuth: false,
     isError: false,
-    isErrorMsg: ""
+    isLoading : false,
+    isErrorMsg: "",
+    isActive : false,
 }
 
 export const userSignupReducer = (state = initialState, { type, payload }) => {
@@ -12,16 +14,33 @@ export const userSignupReducer = (state = initialState, { type, payload }) => {
             return {
                 ...state,
                 isAuth: true,
-                isError: false
+                isLoading : false,
+                isError: false,
+                isActive : true,              
             }
         }
 
         case USER_SIGNUP_ERROR: {
             return {
                 ...state,
+                isLoading : false,
                 isError: true,
                 isErrorMsg: payload,
-                isAuth: false
+                isAuth: false, 
+                isActive : true,               
+            }
+        }
+
+        case USER_LOADING : {
+            return {
+                ...state,
+                isLoading : true
+            }
+        }
+        case ISACTIVE :{
+            return {
+                ...state,
+                isActive : false
             }
         }
 
