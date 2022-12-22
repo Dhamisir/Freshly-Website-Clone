@@ -21,7 +21,7 @@ import { adminLogin } from "../../redux/adminLogin/adminLogin.action";
 const AdminLogin = () => {
   const [loginCred, setLoginCred] = useState({});
   const dispatch = useDispatch();
-  const { isAuth, error } = useSelector((store) => store.adminAuth);
+  const { isAuth, error, isLoading } = useSelector((store) => store.adminAuth);
   const { state } = useLocation();
   const naviget = useNavigate();
   const toast = useToast();
@@ -54,17 +54,20 @@ const AdminLogin = () => {
         });
       }
     }
-  }, [isAuth]);
-  if (error) {
-    toast({
-      title: "Something Went Wrong ",
-      description: "You Are Note Admin & Enter Right Credential",
-      status: "error",
-      duration: 2000,
-      position: "top",
-      isClosable: true,
-    });
-  }
+
+    if (error) {
+      toast({
+        title: "Something Went Wrong ",
+        description: "You Are Note Admin & Enter Right Credential",
+        status: "error",
+        duration: 2000,
+        position: "top",
+        isClosable: true,
+      });
+    }
+    
+  }, [isAuth, error]);
+  
   return (
     <div>
       <Navbar />
@@ -110,7 +113,20 @@ const AdminLogin = () => {
               <Input type="password" name="password" onChange={hanldeChange} />
             </FormControl>
             <Stack spacing={6} alignItems={"center"}>
-              <Button
+              {
+                isLoading?<Button
+                isLoading
+                loadingText='Loading'
+                width={"200px"}
+                bg={"green.700"}
+                color={"white"}
+                _hover={{
+                  bg: "green.600",
+                }}
+                type="submit"
+              >
+                Login
+              </Button> : <Button
                 width={"200px"}
                 bg={"green.700"}
                 color={"white"}
@@ -121,6 +137,8 @@ const AdminLogin = () => {
               >
                 Login
               </Button>
+              }
+              
             </Stack>
           </form>
         </Stack>
