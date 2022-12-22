@@ -1,4 +1,4 @@
-import { USER_LOGIN,IS_LOADING, USER_LOGIN_ERROR, USER_LOGOUT } from "./userLogin.type";
+import { USER_LOGIN,IS_LOADING,USER_LODING_FALSE, USER_LOGIN_ERROR, USER_LOGOUT } from "./userLogin.type";
 
 const userToken = localStorage.getItem("userToken")
 const initialState = {
@@ -19,6 +19,13 @@ export const userLoginReducer = (state = initialState, { type, payload }) => {
                 token: payload,
                 isError: false,
                 isLoading:false
+            }
+        }
+
+        case USER_LODING_FALSE :{
+            return {
+                ...state,
+                isError : false
             }
         }
 

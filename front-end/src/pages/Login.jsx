@@ -14,12 +14,13 @@ import {
     Stack,
 } from "@chakra-ui/react";
 import { useToast } from '@chakra-ui/react'
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from 'react';
 import { userLogin } from '../redux/userLogin/userLogin.action';
 import Navbar from '../componets/Navbar';
 import Footer from '../componets/Footer';
+import { useEffect } from 'react';
 
 const Login = () => {
     const { isAuth, isError, isLoading, isErrormsg } = useSelector(store => store.userLogin)
@@ -28,25 +29,29 @@ const Login = () => {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const toast = useToast()
+    let navigate = useNavigate();
 
-    if (isAuth) {
-        toast({
-            title : `Login Successfully`,
-            status: "success",
-            position: "top",
-            isClosable: true,
-            })
-        return <Navigate to="/" />
-    }
-     if(isError){
-        toast({
-            title : `${isErrormsg}`,
-            status: "error",
-            position: "top",
-            isClosable: true,
-            })
-        
-     }
+    useEffect(() =>{
+        if (isAuth) {
+            toast({
+                title : `Login Successfully`,
+                status: "success",
+                position: "top",
+                isClosable: true,
+                })
+            // return <Navigate to="/" />
+            navigate("/")
+        }
+         if(isError){
+            toast({
+                title : `${isErrormsg}`,
+                status: "error",
+                position: "top",
+                isClosable: true,
+                })
+            
+         }
+    }, [isAuth, isError]);
 
     const handleSubmit = (e) => {
         e.preventDefault();

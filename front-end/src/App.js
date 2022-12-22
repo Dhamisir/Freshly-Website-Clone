@@ -1,6 +1,6 @@
 import "./App.css";
 import AllRoutes from "./pages/AllRoutes";
-import Loading from "./pages/home/Loading";
+// import Loading from "./pages/home/Loading";
 
 function App() {
   return (
