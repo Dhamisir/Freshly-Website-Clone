@@ -5,6 +5,7 @@ const initialState = {
     isAuth: !!userToken,
     token: userToken || "",
     isError: false,
+    isErrormsg :null,
     isLoading: false
 }
 
@@ -42,6 +43,7 @@ export const userLoginReducer = (state = initialState, { type, payload }) => {
             return {
                 ...state,
                 isError: true,
+                isErrormsg: payload,
                 isLoading:false
             }
         }

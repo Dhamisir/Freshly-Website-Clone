@@ -13,6 +13,7 @@ import {
     Input,
     Stack,
 } from "@chakra-ui/react";
+import { useToast } from '@chakra-ui/react'
 import { Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from 'react';
@@ -21,15 +22,31 @@ import Navbar from '../componets/Navbar';
 import Footer from '../componets/Footer';
 
 const Login = () => {
-    const { isAuth, isError, isLoading } = useSelector(store => store.userLogin)
+    const { isAuth, isError, isLoading, isErrormsg } = useSelector(store => store.userLogin)
     const dispatch = useDispatch();
     // console.log(isAuth, token, isError, process.env.REACT_APP_MAIN_URL)
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
+    const toast = useToast()
 
     if (isAuth) {
+        toast({
+            title : `Login Successfully`,
+            status: "success",
+            position: "top",
+            isClosable: true,
+            })
         return <Navigate to="/" />
     }
+     if(isError){
+        toast({
+            title : `${isErrormsg}`,
+            status: "error",
+            position: "top",
+            isClosable: true,
+            })
+        
+     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -79,22 +96,7 @@ const Login = () => {
                             <Input type="password" name="password" onChange={(e) => { setPassword(e.target.value) }} />
                         </FormControl>
                          <Stack spacing={6} alignItems={"center"}>
-                            {/* <Button
-                                 isLoading 
-                                loadingText='Loading'
-                                width={"200px"}
-                                bg={"green.700"}
-                                color={"white"}
-                                // variant='outline'
-                                //   spinnerPlacement='start'
-                                _hover={{
-                                    bg: "green.600",
-                                }}
-                                type="submit"
-                            >
-                              
-                                Login
-                            </Button> */}
+                            
 
 {
                                 isLoading? 

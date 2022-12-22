@@ -11,8 +11,9 @@ export const userLogin = (cred) => (dispatch) => {
             // console.log("token", res.data.token)
             dispatch({ type: USER_LOGIN, payload: res.data.token });
         })
-        .catch(() => {
-            dispatch({ type: USER_LOGIN_ERROR })
+        .catch((err) => {
+            
+            dispatch({ type: USER_LOGIN_ERROR, payload : err.response.data.msg })
         })
 };
 export const userLogout = () => ({ type: USER_LOGOUT });
