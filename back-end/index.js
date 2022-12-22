@@ -6,19 +6,19 @@ const cors = require("cors");
 app.use(express.json());
 app.use(cors());
 
-const adminRouter = require("./features/admin/admin.route");
+const adminRouter = require("./Routes/admin.route");
 
 //Import Users Route
-const userRouter = require('./features/Users/Users.Route');
+const userRouter = require('./Routes/Users.Route');
 //Import Products Route
-const productsRouter = require('./features/Products/Products.Router')
+const productsRouter = require('./Routes/Products.Router')
 //Import Products Route
-const cartRouter = require("./features/Carts/Carts.route");
+const cartRouter = require("./Routes/Carts.route");
 
 
 //For connecting to the database
 const connection = require("./config/db");
-connection();
+
 //adminRouter
 app.use("/admin", adminRouter);
 
@@ -29,9 +29,10 @@ app.use("/users", userRouter);
 app.use("/products", productsRouter);
 
 // For Carts Router
-app.use("/carts", cartRouter)
+app.use("/carts", cartRouter);
 
 //Listening to the Server in 8080 port
 app.listen(port, () => {
+  connection();
   console.log(`Listening to the http://localhost:${port}`);
 });
