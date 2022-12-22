@@ -9,7 +9,7 @@ Router.post("/add", async (req, res) => {
   try {
     let { token, productId } = req.body;
     if (!token || !productId) {
-      res.status(404).send({ error: "Sorry!" });
+      res.status(404).send({ error: "Sorry! You can't add Product" });
     }
     let getValue = token.split(":");
     let userId = getValue[0];
@@ -22,19 +22,19 @@ Router.post("/add", async (req, res) => {
         { count: isCart.count + 1 },
         { new: true }
       );
-      res.status(201).send("update");
+      res.status(200).send({msg : "update"});
     } else {
       let product = await Product.findOne({ _id: productId });
 
       if (product) {
         let carts = await Cart.create({ userId, productId, product });
         if (carts) {
-          res.status(201).send("Added");
+          res.status(200).send({msg : "Successfully Added into the cart"});
         }
       }
     }
   } catch (error) {
-    res.status(404).send({ error: "Something Went Wrong!" });
+    res.status(500).send({ msg: "Something Went Wrong!" });
   }
 });
 
@@ -43,7 +43,7 @@ Router.post("/get", async (req, res) => {
   try {
     let { token } = req.body;
     if (!token) {
-      res.status(404).send({ error: "Sorry!" });
+      res.status(404).send({ msg: "Sorry! You have to Login first" });
     }
     let getValue = token.split(":");
     let userId = getValue[0];
@@ -51,12 +51,12 @@ Router.post("/get", async (req, res) => {
     let userProduct = await Cart.find({ userId });
     if (userProduct.length > 0) {
       let getProduct = await Product.findById();
-      res.status(201).send(userProduct);
+      res.status(200).send(userProduct);
     } else {
-      res.status(201).send("");
+      res.status(200).send("");
     }
   } catch (error) {
-    res.status(404).send({ error: "Something Went Wrong!", mes: error });
+    res.status(500).send({ error: "Something Went Wrong!", mes: error });
   }
 });
 
@@ -72,10 +72,10 @@ Router.delete("/delete/:id", async (req, res) => {
     // let userId = getValue[0];
     let isCheck = await Cart.findOneAndDelete(id);
     if (isCheck) {
-      res.status(201).send("Deleted Successfully!");
+      res.status(200).send({msg : "Deleted Successfully!"});
     }
   } catch (error) {
-    res.status(404).send({ error: "Something Went Wrong!", mes: error });
+    res.status(500).send({ msg: "Something Went Wrong!", error });
   }
 });
 
@@ -94,13 +94,13 @@ Router.patch("/update/:id", async (req, res) => {
         { count: isExists.count - 1 },
         { new: true }
       );
-      res.status(201).send({ msg: "updated" });
+      res.status(200).send({ msg: "updated" });
     } else {
       let update = await Cart.findByIdAndDelete(id);
-      res.status(201).send({ msg: "Deleted" });
+      res.status(200).send({ msg: "Deleted" });
     }
   } catch (error) {
-    res.status(404).send({ error: "Something Went Wrong!", mes: error });
+    res.status(500).send({ msg: "Something Went Wrong!",error });
   }
 });
 
@@ -109,17 +109,17 @@ Router.post("/userCartDelete", async (req, res) => {
   try {
     let { token } = req.body;
     if (!token) {
-      res.status(404).send({ error: "Sorry!" });
+      res.status(404).send({ msg: "Sorry! You have to Login first"});
     }
     let getValue = token.split(":");
     let userId = getValue[0];
 
     let userCartDelete = await Cart.deleteMany({ userId });
     if (userCartDelete) {
-      res.status(201).send("Delete Successfully");
+      res.status(201).send({msg : "Delete Successfully"});
     }
   } catch (error) {
-    res.status(404).send({ error: "Something Went Wrong!", mes: error });
+    res.status(404).send({ msg: "Something Went Wrong!",  error });
   }
 });
 

@@ -3,6 +3,7 @@ import {
   ADMIN_LOGIN_ERROR,
   ADMIN_LOGIN_SUCCESS,
   ADMIN_LOGOUT,
+  ISLoding
 } from "./adminLogin.type";
 
 const token = localStorage.getItem("AdminToken");
@@ -11,6 +12,8 @@ const initialValue = {
   token: token,
   data: [],
   error: false,
+  isErrorMsg : null,
+  isLoading : false,
 };
 
 export const adminReducer = (state = initialValue, { type, payload }) => {
@@ -23,6 +26,7 @@ export const adminReducer = (state = initialValue, { type, payload }) => {
         token: payload,
         data: payload.admin,
         error: false,
+        isLoading : false,
       };
     }
     case ADMIN_LOGIN_ERROR: {
@@ -30,9 +34,17 @@ export const adminReducer = (state = initialValue, { type, payload }) => {
         ...state,
         isAuth: false,
         token: payload,
+        isErrorMsg : payload,
         data: [],
         error: true,
+        isLoading : false
       };
+    }
+    case ISLoding :{
+      return {
+        ...state,
+        isLoading : true,
+      }
     }
     case ADMIN_LOGOUT: {
       localStorage.removeItem("AdminToken");
@@ -40,6 +52,7 @@ export const adminReducer = (state = initialValue, { type, payload }) => {
         ...state,
         isAuth: false,
         token: "",
+        isLoading : false
       };
     }
     default:

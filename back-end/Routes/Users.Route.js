@@ -45,15 +45,15 @@ Router.post("/login", async (req, res) => {
     }
     //Check if password is wrong
     if (isEmail.password !== password) {
-      res.status(404).send();
+      res.status(404).send({msg : "Opps! please enter right credintial"});
     }
     let token = `${isEmail._id}:${isEmail.role}`;
 
     res.cookie("next-food", token);
     // if all criteria are pass then send the token
-    res.status(201).send({ token: `${isEmail._id}:${isEmail.role}` });
+    res.status(200).send({msg : "Successfully Login", token: `${isEmail._id}:${isEmail.role}` });
   } catch (error) {
-    res.status(404).send({ error: "Something Went Wrong!" });
+    res.status(500).send({ msg: "Something Went Wrong!" });
   }
 });
 
@@ -65,10 +65,10 @@ Router.get("/allUser", async (req, res) => {
       .limit(limit)
       .skip((page - 1) * limit);
     if (allUses) {
-      res.status(201).send(allUses);
+      res.status(200).send(allUses);
     }
   } catch (error) {
-    res.status(404).send({ error: "Something Went Wrong!" });
+    res.status(500).send({ msg: "Something Went Wrong!" });
   }
 });
 
@@ -82,13 +82,13 @@ Router.delete("/delete/:id", async (req, res) => {
     if (isUser) {
       let deleteUser = await Product.findByIdAndDelete(id, { new: true });
       if (deleteUser) {
-        res.status(201).send(user);
+        res.status(200).send(user);
       }
     } else {
-      res.status(404).send("Product Not Exists!");
+      res.status(404).send({msg : "User Not Exists!"});
     }
   } catch (error) {
-    res.status(404).send({ error: "Something Went Wrong!" });
+    res.status(500).send({ msg: "Something Went Wrong!" });
   }
 });
 
