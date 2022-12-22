@@ -13,16 +13,19 @@ import {
     Input,
     Stack,
 } from "@chakra-ui/react";
+import { useToast } from '@chakra-ui/react'
 import { Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from 'react';
 import { signupUser } from '../redux/userSignup/userSignup.action';
 import Navbar from '../componets/Navbar';
 import Footer from '../componets/Footer';
+import { ISACTIVE } from '../redux/userSignup/userSignup.type';
 
 const Signup = () => {
-    const { isAuth, isError } = useSelector(store => store.userSignup)
+    const { isAuth, isError, isErrorMsg, isActive, isLoading } = useSelector(store => store.userSignup)
     const dispatch = useDispatch();
+    const toast = useToast()
     // console.log(isAuth, token, isError, process.env.REACT_APP_MAIN_URL)
     const [form, setForm] = useState({
         first_name: "",
@@ -31,9 +34,28 @@ const Signup = () => {
         password: ""
     })
 
+ if(isActive){
     if (isAuth) {
+        toast({
+            title : `Signup Successfully`,
+            status: "success",
+            position: "top",
+            isClosable: true,
+            })
         return <Navigate to="/login" />
+    }else{
+       
+              toast({
+                title : `${isErrorMsg}`,
+                status: "error",
+                position: "top",
+                isClosable: true,
+                });
+
+                dispatch({type : ISACTIVE})
+       
     }
+ }
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -118,7 +140,20 @@ const Signup = () => {
                         </FormControl>
 
                         <Stack spacing={6} alignItems={"center"}>
-                            <Button
+                            {
+                                isLoading? <Button
+                                isLoading
+                                loadingText='Loading'
+                                width={"200px"}
+                                bg={"green.700"}
+                                color={"white"}
+                                _hover={{
+                                    bg: "green.600",
+                                }}
+                                type="submit"
+                            >
+                                Signup
+                            </Button>: <Button
                                 width={"200px"}
                                 bg={"green.700"}
                                 color={"white"}
@@ -129,6 +164,9 @@ const Signup = () => {
                             >
                                 Signup
                             </Button>
+
+
+                            }
                         </Stack>
                     </form>
                 </Stack>
