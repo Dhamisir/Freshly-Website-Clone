@@ -4,6 +4,7 @@ import {
   ADMIN_PRODUCT_PAGE_DECRIMANT,
   ADMIN_PRODUCT_PAGE_INCREMANT,
   ADMIN_SHOW_PRODUCT,
+  Is_Loading
 } from "./AdminShowProduct.type";
 
 const mainUrl = process.env.REACT_APP_MAIN_URL;
@@ -12,6 +13,7 @@ const token = localStorage.getItem("AdminToken");
 // get Product
 
 export const adminShowProduct = (page) => async (dispatch) => {
+  dispatch({type : Is_Loading})
   let cred = { token };
   console.log(cred);
   try {
