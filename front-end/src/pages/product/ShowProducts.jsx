@@ -15,7 +15,12 @@ import {
   ModalFooter,
   useDisclosure,
   Select,
+  Stack,
+  Input
 } from "@chakra-ui/react";
+import { PhoneIcon, AddIcon, WarningIcon ,DeleteIcon} from '@chakra-ui/icons'
+import { Icon ,createIcon} from '@chakra-ui/react'
+// import { DeleteIcon} from 'react-icons/md'
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -263,6 +268,65 @@ const ShowProducts = () => {
               <Heading size={"sm"}>Price - $ {show.price}</Heading>
               <Heading size={"sm"}>Rating - {show.rating}</Heading>
             </Flex>
+            <Stack gap={"20px"}
+            p={"1rem"}
+            boxShadow="lg"
+            rounded={"lg"}>
+              <Heading size={"md"}>Review Section</Heading>
+              <br/>
+
+              {/* <Text size={"md"}>user: </Text> */}
+              <Flex gap={"3px"}>  
+             
+{/* ---------------------- */}
+
+<Button onClick={onOpen}>Add</Button>
+
+<Modal isOpen={isOpen} onClose={onClose}>
+  <ModalOverlay />
+  <ModalContent>
+    <ModalHeader> 
+      <Text>Add reviews</Text>
+      <br/>
+    
+      </ModalHeader>
+    <ModalCloseButton />
+    <ModalBody>
+    <form 
+    id="new-form"
+    onSubmit={(e) => {
+      e.preventDefault();
+      alert("Comment Added")
+    }}>
+       <Input   type="text"
+        pointerEvents='none'
+              variant='filled' placeholder='comment' />
+      
+    </form>
+    </ModalBody>
+
+    <ModalFooter gap={"3px"}>
+      
+      <Button  type="submit" form="new-form" border={"1px solid blue"}  mr={3}variant='ghost'>Send</Button>
+      <Button  border={"1px solid blue"}  mr={3}variant='ghost'>Edit</Button>
+      <Button  borderRadius={"300px"} colorScheme='blue' mr={3} onClick={onClose}>
+        close
+      </Button>
+    </ModalFooter>
+  </ModalContent>
+</Modal>
+
+
+               <Button colorScheme='twitter'>
+    Send
+  </Button>
+ 
+  {/* <Icon paddingTop={"2px"} as={DeleteIcon} /> */}
+              </Flex>
+            
+            </Stack>
+
+            {/* ----------------------------------- */}
           </ModalBody>
 
         </ModalContent>

@@ -43,7 +43,7 @@ const Loading =() =>{
            thickness='4px'
            speed='0.65s'
            emptyColor='green.200'
-           color='white.500'
+           color='blue.500'
           
          />
           </Box>

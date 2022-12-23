@@ -15,7 +15,7 @@ function App() {
 
   setLoading(false)
 
-     },3000)
+     },3500)
  },[])
 
   return (
