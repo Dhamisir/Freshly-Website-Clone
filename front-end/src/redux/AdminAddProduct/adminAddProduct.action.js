@@ -6,7 +6,7 @@ const token = localStorage.getItem("AdminToken");
 export const adminAddP = (data) => async (dispatch) => {
   let cred = { token, ...data };
   // data.token = token;
-  // console.log("not", cred);
+  console.log("not", cred);
   try {
     let res = await axios.post(`${mainUrl}/products/post`, cred);
     dispatch({ type: ADMIN_ADD_PRODUCT, payload: res.data });

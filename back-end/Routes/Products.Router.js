@@ -6,7 +6,9 @@ const Product = require("../Models/Products.module");
 // Get The all Products into the database at url (http://localhost:8080/products/get)
 Router.get("/get", async (req, res) => {
   try {
-    let allProducts = await Product.find();
+    let limit = 8;
+    let {page = 1} = req.query;
+    let allProducts = await Product.find().limit(limit).skip((page - 1) * limit);
     res.status(200).send(allProducts);
   } catch (error) {
     res.status(500).send({ msg: "Something Went Wrong!" });

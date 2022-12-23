@@ -59,17 +59,18 @@ const ShowProducts = () => {
   const { isAuth, token } = useSelector((store) => store.userLogin);
   const { cart } = useSelector((store) => store.cartItems);
   const dispatch = useDispatch();
+  let [page, setPage] = useState(1);
 
   useEffect(() => {
 
-    dispatch(getproducts()).then((items) => {
+    dispatch(getproducts(page)).then((items) => {
       // console.log("inside dispatch", res);
       setProductItems(items);
     });
     // console.log("outside dispatch");
     // dispatch(singleGet(show));
     dispatch(cartShow({ token: token }));
-  }, []);
+  }, [page]);
 
   console.log("prodyct", productItems);
 
@@ -175,6 +176,39 @@ const ShowProducts = () => {
           </Box>
         ))}
       </Grid>
+      <div style={{ margin : "50px 0", display : "flex", alignItems : "center", justifyContent : "center"}}>
+      <Button 
+             ml={5}
+              variant={"solid"}
+              bg={"blue.700"}
+              color={"white"}
+              width={"7rem"}
+              _hover={{
+                bg: "blue.600",
+              }}
+              mb={"20px"}
+              // onClick={() => dispatch(decrmeent())}
+              onClick={() => setPage(page - 1)}
+              disabled={page === 1}
+            >
+              Prev
+            </Button>
+            <Button
+            ml={5}
+              variant={"solid"}
+              bg={"blue.700"}
+              color={"white"}
+              width={"7rem"}
+              _hover={{
+                bg: "blue.600",
+              }}
+              mb={"20px"}
+              onClick={() => setPage(page + 1)}
+              // disabled={page === 4}
+            >
+              Next
+            </Button>
+      </div>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
