@@ -29,6 +29,35 @@
 
 </p>
 
+<h4 align="center">Deployed On:</h4>
+
+<p align="center">
+<a href="sophisticated-legs-486.netlify.app/">
+  <img src="https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white" alt="netlify" />
+</a>  
+<a href="https://next-foodbackend-production.up.railway.app">
+  <img src="https://img.shields.io/badge/railway-430098?style=for-the-badge&logo=railway&logoColor=white" alt="railway" />
+  </a>
+</p>
+
+<h3 align="center"><a href="sophisticated-legs-486.netlify.app/"><strong>Want to see live preview »</strong></a></h3>
+
+
+<br />
+
+<p align="center">
+  <br />&#10023;
+  <a href="#Demo">View Demo</a> &#10023;
+  <a href="#Getting-Started">Getting Started</a> &#10023; 
+  <a href="#Install">Installing</a> &#10023;
+  <a href="#Contact">Author</a> &#10023;
+</p>
+
+It’s Group project where we've used MERN stack to build the Freshly.com with our creativity along with frontend and backend integration
+its Fully Responsive. Freshly is a weekly subscription that delivers fresh meals. Created Carts, Products, Users, Admin API ( Back-End ).
+
+<img src="https://drive.google.com/file/d/1E10Zq2L5ppYTgDg_tWG-87_Yu91NyrHF/view?usp=share_link" alt="Home Page" width="800px" />
+
 ## Team Members.
 1.	Mr. Himanshu Dhami [Team Leader].
 2.	Mr. Arjun Sen.
