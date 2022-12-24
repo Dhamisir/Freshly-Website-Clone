@@ -291,7 +291,7 @@ const ShowProducts = () => {
 
 
 <Box>
-<Modalal/>
+<Modalal productId = {show._id}/>
 </Box>
  
 </Flex>
@@ -299,7 +299,7 @@ const ShowProducts = () => {
           </ModalBody>
 
         </ModalContent>
-      </Modal>
+      </Modal >
 
 
       
