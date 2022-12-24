@@ -56,7 +56,39 @@
 It’s Group project where we've used MERN stack to build the Freshly.com with our creativity along with frontend and backend integration
 its Fully Responsive. Freshly is a weekly subscription that delivers fresh meals. Created Carts, Products, Users, Admin API ( Back-End ).
 
-<img src="https://drive.google.com/file/d/1E10Zq2L5ppYTgDg_tWG-87_Yu91NyrHF/view?usp=share_link" alt="Home Page" width="800px" />
+## Home Page
+![homePage](https://user-images.githubusercontent.com/96005514/209442724-34ac9e8f-8f45-45e3-a33d-6a7d6d9220ad.png)
+
+## Menu Page
+![menu](https://user-images.githubusercontent.com/96005514/209442738-924838f0-cbea-4e7c-9728-ab71cd6caf0e.png)
+
+## Contact Page
+![contact](https://user-images.githubusercontent.com/96005514/209442749-2256e19e-e7ab-4b9d-a60a-c70b1fa1c860.png)
+
+## How It Works Page
+![howItsWork](https://user-images.githubusercontent.com/96005514/209442753-c667f1ab-9378-416b-a70f-29a39f46f50f.png)
+
+## Gift Page
+![gift](https://user-images.githubusercontent.com/96005514/209442756-f6e5df12-6256-47f6-bbb5-2be8735f10cf.png)
+
+## Signup Page
+![userSignup](https://user-images.githubusercontent.com/96005514/209442762-491eba42-aa3f-4bab-be31-b33bf859f2f3.png)
+
+## Login Page
+![login](https://user-images.githubusercontent.com/96005514/209442766-33560923-0d8d-498a-b9cf-3f98f3ba6595.png)
+
+## Product Page
+![addProduct](https://user-images.githubusercontent.com/96005514/209442770-d1db6a2c-349f-4cb4-ac27-fdcf4894dc6e.png)
+
+## Cart Page
+![cart](https://user-images.githubusercontent.com/96005514/209442772-15ac13e6-f40d-4fe9-8fc0-b6d703c58b34.png)
+
+## Admin Product Page
+![adminProduct](https://user-images.githubusercontent.com/96005514/209442786-db528c5e-6d0c-49ae-a259-10bb5394c518.png)
+
+## Admin User Page
+![adminUser](https://user-images.githubusercontent.com/96005514/209442791-26bb8202-6179-4f79-8a63-428fc6b1df36.png)
+
 
 ## Team Members.
 1.	Mr. Himanshu Dhami [Team Leader].
