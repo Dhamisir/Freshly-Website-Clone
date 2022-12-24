@@ -77,13 +77,14 @@ Router.delete("/delete/:id", async (req, res) => {
   try {
     let id = req.params.id;
     let isUser = await User.findOne({ _id: id });
-    let user = await User.find();
+    // let user = await User.find();
+    
 
     if (isUser) {
-      let deleteUser = await Product.findByIdAndDelete(id, { new: true });
-      if (deleteUser) {
+      let deleteUser = await User.findByIdAndDelete(id, { new: true });
+      let user = await User.find();
         res.status(200).send(user);
-      }
+ 
     } else {
       res.status(404).send({msg : "User Not Exists!"});
     }

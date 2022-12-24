@@ -21,10 +21,11 @@ export const getAllUser = (page) => async (dispatch) => {
 
 export const deleteUser = (id) => async (dispatch) => {
   try {
-    let res = await axios.delete(`${mainUrl}users/delete/${id}`);
+    // console.log(id)
+    let res = await axios.delete(`${mainUrl}/users/delete/${id}`);
     dispatch({ type: ADMIN_DELETE_USER, payload: res.data });
     // console.log(res.data);
-    return res.data;
+    // return res.data;
   } catch (error) {
     console.log(error.masseg);
   }
