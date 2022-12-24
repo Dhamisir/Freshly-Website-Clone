@@ -1,6 +1,6 @@
 <h1 align="center">Freshly-Website-Clone ( Team Project )</h1>
 
-<h3 align="center">Freshly is a weekly subscription that delivers fresh meals. Created Carts, Products, Users, Admin API ( Back-End ). Except Payment Page Completed All Pages ( Front-End ). It was a collaborative project</h3>
+<h3 align="center">It's a MERN Stack E-commerce website with all the major functionalities</h3>
 
 <br />
 
@@ -40,7 +40,7 @@
   </a>
 </p>
 
-<h3 align="center"><a href="sophisticated-legs-486.netlify.app/"><strong>Want to see live preview »</strong></a></h3>
+<h3 align="center"><a href="https://sophisticated-legs-486.netlify.app/"><strong>Want to see live preview »</strong></a></h3>
 
 
 <br />
