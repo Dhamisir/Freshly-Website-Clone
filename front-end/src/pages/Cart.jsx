@@ -18,12 +18,14 @@ import {
     Image,
     Alert,
     AlertIcon,
+    useToast,
 } from '@chakra-ui/react'
 import { useDispatch, useSelector } from 'react-redux'
 import { AllDelete, cartAdd, cartDelete, cartShow, cartUpdate } from '../redux/cart/cart.action'
 import { Navigate } from 'react-router-dom'
 import { useState } from 'react'
 import { useRef } from 'react'
+
 
 
 const Details = ({ id, no, title, img, price, count, token, productId }) => {
@@ -47,7 +49,7 @@ const Cart = () => {
     const { cart } = useSelector(store => store.cartItems);
     const totalCount = useRef(null);
     const totalPrice = useRef(null)
-
+    const toast = useToast()
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -62,7 +64,13 @@ const Cart = () => {
 
     const TableFormat = () => {
         const checkout = () => {
-            alert("Order Successfull !");
+           
+            toast({
+                title : `Order Successfull !`,
+                status: "success",
+                position: "top",
+                isClosable: true,
+                })
             dispatch(AllDelete({ token: token }))
         }
         return (
