@@ -16,10 +16,14 @@ import {
   useDisclosure,
   Select,
   Stack,
-  Input
+  Input,
+  FormControl,
+  FormLabel,
+  FormHelperText
 } from "@chakra-ui/react";
 import { PhoneIcon, AddIcon, WarningIcon ,DeleteIcon} from '@chakra-ui/icons'
-import { Icon ,createIcon} from '@chakra-ui/react'
+import { Icon ,createIcon} from '@chakra-ui/react';
+import Modalal from "./Modal"
 // import { DeleteIcon} from 'react-icons/md'
 import React, { useState } from "react";
 import { useEffect } from "react";
@@ -268,17 +272,43 @@ const ShowProducts = () => {
               <Heading size={"sm"}>Price - $ {show.price}</Heading>
               <Heading size={"sm"}>Rating - {show.rating}</Heading>
             </Flex>
-            <Stack gap={"20px"}
+         
+            <Flex gap={5}
             p={"1rem"}
             boxShadow="lg"
             rounded={"lg"}>
               <Heading size={"md"}>Review Section</Heading>
               <br/>
 
-              {/* <Text size={"md"}>user: </Text> */}
+
+<Box>
+<Modalal/>
+</Box>
+ 
+</Flex>
+        
+          </ModalBody>
+
+        </ModalContent>
+      </Modal>
+
+
+      
+{/* -------------------------------- */}
+
+
+
+{/* <Stack gap={"20px"}
+            p={"1rem"}
+            boxShadow="lg"
+            rounded={"lg"}>
+              <Heading size={"md"}>Review Section</Heading>
+              <br/>
+
+            
               <Flex gap={"3px"}>  
              
-{/* ---------------------- */}
+
 
 <Button onClick={onOpen}>Add</Button>
 
@@ -286,7 +316,7 @@ const ShowProducts = () => {
   <ModalOverlay />
   <ModalContent>
     <ModalHeader> 
-      <Text>Add reviews</Text>
+      <Text> Users Feedback</Text>
       <br/>
     
       </ModalHeader>
@@ -298,9 +328,18 @@ const ShowProducts = () => {
       e.preventDefault();
       alert("Comment Added")
     }}>
-       <Input   type="text"
-        pointerEvents='none'
+       
+              <FormControl>
+                <FormLabel>
+                Add reviews
+                </FormLabel>
+                <Input   type="text"
+        // pointerEvents='none'
               variant='filled' placeholder='comment' />
+              <FormHelperText>
+                Add your valuable reviews here...
+              </FormHelperText>
+              </FormControl>
       
     </form>
     </ModalBody>
@@ -319,18 +358,13 @@ const ShowProducts = () => {
 
                <Button colorScheme='twitter'>
     Send
-  </Button>
+  </Button> 
  
-  {/* <Icon paddingTop={"2px"} as={DeleteIcon} /> */}
+  
               </Flex>
             
-            </Stack>
+            </Stack> */}
 
-            {/* ----------------------------------- */}
-          </ModalBody>
-
-        </ModalContent>
-      </Modal>
     </>
   );
 };
