@@ -16,6 +16,7 @@ const Sidebar = () => {
     <div>
       <Box
         // pl={"20px"}
+        display={{md :"none", lg : 'block'}}
         pr={"20px"}
         h={"100%"}
         transition="3s ease"
