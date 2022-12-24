@@ -14,13 +14,17 @@ const userRouter = require('./Routes/Users.Route');
 const productsRouter = require('./Routes/Products.Router')
 //Import Products Route
 const cartRouter = require("./Routes/Carts.route");
-
+//Import Review Route
+const {reviewRouter} = require('./Routes/Review.route');
 
 //For connecting to the database
 const connection = require("./config/db");
 
 //adminRouter
 app.use("/admin", adminRouter);
+
+//reviewRouter
+app.use("/review", reviewRouter);
 
 // For Users Router
 app.use("/users", userRouter);

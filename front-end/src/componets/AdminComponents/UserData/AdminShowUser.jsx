@@ -25,7 +25,7 @@ const AdminShowUser = () => {
   useEffect(() => {
     dispatch(getAllUser(page));
   }, [page]);
-  console.log(adminAlluser);
+  
   return (
     <div>
       <Container maxW={"100%"} mt={"20px"}>

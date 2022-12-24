@@ -10,6 +10,8 @@ import {
   Th,
   Thead,
   Tr,
+  Spinner,
+  Box
 } from "@chakra-ui/react";
 
 import { MdAddCircleOutline } from "react-icons/md";
@@ -23,7 +25,7 @@ import {
 } from "../../../redux/AdminShowProduct/AdminShowProduct.action";
 import AdminProductShowCard from "./AdminProductShowCard";
 const AdminProductShow = () => {
-  const { adminProduct, page } = useSelector((store) => store.adminShowProduct);
+  const { adminProduct, page, isLoading } = useSelector((store) => store.adminShowProduct);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(adminShowProduct(page));
@@ -77,7 +79,16 @@ const AdminProductShow = () => {
             <Link to={"/admin/addProduct"}>Add Product</Link>
           </Button>
         </Flex>
-        <TableContainer boxShadow={"rgba(99, 99, 99, 0.2) 0px 2px 8px 0px"}>
+        {
+          isLoading? <Box  w='100%' p={4} textAlign ={'center'}>
+         <Spinner
+  thickness='4px'
+  speed='0.65s'
+  emptyColor='gray.200'
+  color='green.700'
+  size='xl'
+/>
+        </Box> : <TableContainer boxShadow={"rgba(99, 99, 99, 0.2) 0px 2px 8px 0px"}>
           <Table variant={"simple"}>
             <Thead>
               <Tr>
@@ -100,7 +111,32 @@ const AdminProductShow = () => {
               ))}
             </Tbody>
           </Table>
-        </TableContainer>
+        </TableContainer> 
+        }
+        {/* <TableContainer boxShadow={"rgba(99, 99, 99, 0.2) 0px 2px 8px 0px"}>
+          <Table variant={"simple"}>
+            <Thead>
+              <Tr>
+                <Th>ID</Th>
+                <Th>Image</Th>
+                <Th>Product Name</Th>
+                <Th>Product Price</Th>
+                <Th></Th>
+              </Tr>
+            </Thead>
+            <Tbody>
+              {adminProduct.map((item) => (
+                <AdminProductShowCard
+                  key={item._id}
+                  id={item._id}
+                  img={item.img}
+                  title={item.title}
+                  price={item.price}
+                />
+              ))}
+            </Tbody>
+          </Table>
+        </TableContainer> */}
         <Flex gap={"60px"} mt={"20px"} justifyContent={"center"}>
           <Button
             variant={"solid"}

@@ -15,7 +15,9 @@ import {
   ModalFooter,
   useDisclosure,
   Select,
-  Stack
+  Stack,
+  Input,
+  Spinner
 } from "@chakra-ui/react";
 import { PhoneIcon, AddIcon, WarningIcon ,DeleteIcon} from '@chakra-ui/icons'
 import { Icon ,createIcon} from '@chakra-ui/react';
@@ -65,16 +67,19 @@ const ShowProducts = () => {
   const { cart } = useSelector((store) => store.cartItems);
   const dispatch = useDispatch();
   let [page, setPage] = useState(1);
+  let [loading, setLoading] = useState(false);
 
   useEffect(() => {
-
+    setLoading(true);
     dispatch(getproducts(page)).then((items) => {
       // console.log("inside dispatch", res);
+      setLoading(false)
       setProductItems(items);
     });
     // console.log("outside dispatch");
     // dispatch(singleGet(show));
     dispatch(cartShow({ token: token }));
+    setLoading(false)
   }, [page]);
 
   console.log("prodyct", productItems);
@@ -124,7 +129,15 @@ const ShowProducts = () => {
           <option value="proteins & sides">Proteins & Sides</option> */}
       </Select>
       </Flex>
-      <Grid
+     {loading? <Box  w='100%' p={4} textAlign ={'center'}>
+         <Spinner
+  thickness='4px'
+  speed='0.65s'
+  emptyColor='gray.200'
+  color='green.700'
+  size='xl'
+/>
+        </Box> : <Grid
         gridTemplateColumns={{
           lg: "repeat(4,1fr)",
           md: "repeat(3,1fr)",
@@ -180,7 +193,7 @@ const ShowProducts = () => {
             )}
           </Box>
         ))}
-      </Grid>
+      </Grid>}
       <div style={{ margin : "50px 0", display : "flex", alignItems : "center", justifyContent : "center"}}>
       <Button 
              ml={5}
