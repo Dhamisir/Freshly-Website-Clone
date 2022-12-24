@@ -7,6 +7,7 @@ import {
   MenuList,
   Td,
   Tr,
+  useToast
 } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import { BsThreeDotsVertical, BsPencilFill } from "react-icons/bs";
@@ -22,6 +23,7 @@ const AdminProductShowCard = ({ id, img, title, price }) => {
   // useEffect(() => {
   //   dispatch(adminShowProduct(page));
   // }, [page, id]);
+  let toast = useToast();
   return (
     <Tr
       _hover={{
@@ -49,6 +51,13 @@ const AdminProductShowCard = ({ id, img, title, price }) => {
               color={"red"}
               onClick={() => {
                 dispatch(deleteProduct(id));
+                toast({
+                  title: "Deleted Successfully",
+                  status: "success",
+                  isClosable: true,
+                  duration: 2000,
+                  position: "top",
+                });
               }}
             >
               <MenuItem icon={<MdDelete />}>Delete</MenuItem>
